@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf_token" content="{{ csrf_token() }}">
+        
         <title>@yield('title')</title>
 
         <link href="{{ URL::asset('assets/css/bootstrap.css') }}" rel="stylesheet">
@@ -61,19 +63,19 @@
                     </a>
                     <ul class="children collapse" id="sub-item-1">
                         <li>
-                            <a class="" href="#">
-                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Потребители
+                            <a class="" href="{{ action('UserController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.users', 2) }}
                             </a>
                         </li>
                         <li>
-                            <a class="" href="#">
-                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Лекарства
+                            <a class="" href="{{ action('PharmacyController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Pharmacy
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li role="presentation" class="divider"></li>
-                <li><a href="{{ url('/login') }}"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> @lang('messages.login_page')</a></li>
+                <li><a href="{{ url('/') }}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg> @lang('messages.home_page')</a></li>
             </ul>
             @show
         </div><!--/.sidebar-->
@@ -84,32 +86,8 @@
 
         <script src="{{ URL::asset('assets/js/jquery-1.11.1.min.js') }}"></script>
         <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/js/chart.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/js/chart-data.js') }}"></script>
-        <script src="{{ URL::asset('assets/js/easypiechart.js') }}"></script>
-        <script src="{{ URL::asset('assets/js/easypiechart-data.js') }}"></script>
-        <script src="{{ URL::asset('assets/js/bootstrap-datepicker.js') }}"></script>
         <script src="{{ URL::asset('assets/js/bootstrap-table.js') }}"></script>
-        <script>
-$('#calendar').datepicker({
-});
-
-!function ($) {
-    $(document).on("click", "ul.nav li.parent > a > span.icon", function () {
-        $(this).find('em:first').toggleClass("glyphicon-minus");
-    });
-    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-}(window.jQuery);
-
-$(window).on('resize', function () {
-    if ($(window).width() > 768)
-        $('#sidebar-collapse').collapse('show')
-})
-$(window).on('resize', function () {
-    if ($(window).width() <= 767)
-        $('#sidebar-collapse').collapse('hide')
-})
-        </script>	
+        <script src="{{ URL::asset('assets/js/rowlink.js') }}"></script>
     </body>
 
 </html>

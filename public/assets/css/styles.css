@@ -932,11 +932,7 @@ h1.page-header {
     overflow: scroll;
 }
 
-
-
-
-
-
-
-
-
+/******** CUSTOM ********/
+.rowlink tr:hover {
+    cursor: pointer;
+}

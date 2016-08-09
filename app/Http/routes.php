@@ -12,13 +12,29 @@
  */
 
 Route::group(['middlewareGroups' => 'web'], function () {
+    
     Route::auth();
-
     Route::get('/', 'HomeController@index');
 
-    Route::get('/admin', [
-        'uses' => 'AdminController@index',
-        'as' => 'admin',
-        'middleware' => 'auth'
-    ]);
+    Route::group(['middleware' => 'auth'], function () {
+        
+        Route::get('/admin', [
+            'uses' => 'AdminController@index',
+            'as' => 'admin',
+        ]);
+
+        Route::group(['prefix' => 'admin'], function () {
+            Route::resource('user', 'UserController', [
+                'only' => ['index', 'show']
+            ]);
+            
+            Route::resource('pharmacy', 'PharmacyController', ['names' => [
+                'store' => 'pharmacy.store',
+                'update' => 'pharmacy.update',
+                'destroy' => 'pharmacy.destroy'
+            ]]);
+        });
+        
+    });
+    
 });

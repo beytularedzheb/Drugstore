@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 
-@section('title', trans_choice('messages.pharmacies', 1))
+@section('title', trans_choice('messages.wards', 1))
 
 @section('content')
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">{{ trans_choice('messages.pharmacies', 1) }}</h1>
+                    <h1 class="page-header">{{ trans_choice('messages.wards', 1) }}</h1>
                 </div>
             </div><!--/.row-->
 
@@ -16,9 +16,9 @@
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         
-                        {!! Form::open(['method' => 'POST', 'route' => ['pharmacy.store']]) !!}
+                        {!! Form::model($ward, ['method' => 'PUT', 'route' => ['ward.update', $ward->id]]) !!}
                         
-                        <div class="panel-heading text-center">@lang('messages.create')</div>
+                        <div class="panel-heading text-center">{{ $ward->name }}</div>
                         <div class="panel-body">
                             @include('partials.rows.label-text', ['fieldname' => 'name', 'label' => trans('messages.name')])
                             @include('partials.rows.label-text', ['fieldname' => 'uic', 'label' => trans('messages.uic')])
@@ -29,7 +29,7 @@
                         
                         <div class="panel-footer">
                             {!! Form::submit(trans('messages.save'), ['class' => 'btn btn-primary']) !!}
-                            <a href="{{ action('PharmacyController@index') }}" class="btn btn-default">@lang('messages.back')</a>
+                            <a href="{{ action('WardController@index') }}" class="btn btn-default">@lang('messages.back')</a>
                         </div>
                         
                         {!! Form::close() !!}

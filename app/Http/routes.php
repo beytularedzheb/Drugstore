@@ -33,6 +33,30 @@ Route::group(['middlewareGroups' => 'web'], function () {
                 'update' => 'pharmacy.update',
                 'destroy' => 'pharmacy.destroy'
             ]]);
+            
+            Route::resource('ward', 'WardController', ['names' => [
+                'store' => 'ward.store',
+                'update' => 'ward.update',
+                'destroy' => 'ward.destroy'
+            ]]);
+            
+            Route::resource('patient', 'PatientController', ['names' => [
+                'store' => 'patient.store',
+                'update' => 'patient.update',
+                'destroy' => 'patient.destroy'
+            ]]);
+            
+            Route::resource('productCategory', 'ProductCategoryController', ['names' => [
+                'store' => 'productCategory.store',
+                'update' => 'productCategory.update',
+                'destroy' => 'productCategory.destroy'
+            ]]);
+                     
+            Route::resource('product', 'ProductController', ['names' => [
+                'store' => 'product.store',
+                'update' => 'product.update',
+                'destroy' => 'product.destroy'
+            ]]); 
         });
         
     });

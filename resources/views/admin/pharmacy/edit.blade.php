@@ -20,11 +20,11 @@
                         
                         <div class="panel-heading text-center">{{ $pharmacy->name }}</div>
                         <div class="panel-body">
-                            @include('partials.rows.label-text', ['fieldname' => 'name', 'label_key' => 'messages.name'])
-                            @include('partials.rows.label-text', ['fieldname' => 'uic', 'label_key' => 'messages.uic'])
-                            @include('partials.rows.label-text', ['fieldname' => 'accountable_person_name', 'label_key' => 'messages.accountable_person_name'])
-                            @include('partials.rows.label-textarea', ['fieldname' => 'address', 'label_key' => 'messages.address'])
-                            @include('partials.rows.label-text', ['fieldname' => 'phone', 'label_key' => 'messages.phone'])
+                            @include('partials.rows.label-text', ['fieldname' => 'name', 'label' => trans('messages.name')])
+                            @include('partials.rows.label-text', ['fieldname' => 'uic', 'label' => trans('messages.uic')])
+                            @include('partials.rows.label-text', ['fieldname' => 'accountable_person_name', 'label' => trans('messages.accountable_person_name')])
+                            @include('partials.rows.label-textarea', ['fieldname' => 'address', 'label' => trans('messages.address')])
+                            @include('partials.rows.label-text', ['fieldname' => 'phone', 'label' => trans('messages.phone')])
                         </div>
                         
                         <div class="panel-footer">

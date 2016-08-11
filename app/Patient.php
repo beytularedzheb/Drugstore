@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
 {
-
+    protected $fillable = [
+        'name',
+        'disease',
+        'ward_id'
+    ];
+    
+    public function ward() {
+        return $this->belongsTo('App\Ward', 'ward_id');
+    }
 }

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf_token" content="{{ csrf_token() }}">
-        
+
         <title>@yield('title')</title>
 
         <link href="{{ URL::asset('assets/css/bootstrap.css') }}" rel="stylesheet">
@@ -69,9 +69,29 @@
                         </li>
                         <li>
                             <a class="" href="{{ action('PharmacyController@index') }}">
-                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Pharmacy
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.pharmacies', 2) }}
                             </a>
                         </li>
+                        <li>
+                            <a class="" href="{{ action('WardController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.wards', 2) }}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="{{ action('PatientController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.patients', 2) }}
+                            </a>
+                        </li> 
+                        <li>
+                            <a class="" href="{{ action('ProductCategoryController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.product_categories', 2) }}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="{{ action('ProductController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.products', 2) }}
+                            </a>
+                        </li>                        
                     </ul>
                 </li>
                 <li role="presentation" class="divider"></li>
@@ -82,12 +102,11 @@
 
         <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
             @yield('content')
-        </div>	<!--/.main-->
+        </div><!--/.main-->
 
         <script src="{{ URL::asset('assets/js/jquery-1.11.1.min.js') }}"></script>
         <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
         <script src="{{ URL::asset('assets/js/bootstrap-table.js') }}"></script>
-        <script src="{{ URL::asset('assets/js/rowlink.js') }}"></script>
     </body>
 
 </html>

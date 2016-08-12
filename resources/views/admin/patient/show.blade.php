@@ -28,7 +28,9 @@
                                         <th>{{ trans_choice('messages.wards', 1) }}</th>
                                         <td>
                                             <span class="glyphicon glyphicon-home"></span>
+                                            @if (isset($patient->ward_id))
                                             <a class="btn btn-link" href="{{ action('WardController@show', $patient->ward_id) }}">{{ $patient->ward->name }}</a>
+                                            @endif
                                         </td>
                                     </tr>
                                     <tr>

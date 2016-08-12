@@ -24,9 +24,9 @@
                                         <th data-field="accountable_person_name"  data-sortable="true">@lang('messages.accountable_person_name')</th>
                                         <th data-field="address" data-sortable="true">@lang('messages.address')</th>
                                         <th data-field="phone" data-sortable="true">@lang('messages.phone')</th>
-                                        <th data-field="created_at" data-sortable="true">@lang('messages.created_at')</th>
-                                        <th data-field="updated_at" data-sortable="true">@lang('messages.updated_at')</th>
-                                        <th data-sortable="false">
+                                        <th data-visible="false" data-field="created_at" data-sortable="true">@lang('messages.created_at')</th>
+                                        <th data-visible="false" data-field="updated_at" data-sortable="true">@lang('messages.updated_at')</th>
+                                        <th data-switchable="false">
                                             <a class="btn btn-primary btn-block" href="{{ action('PharmacyController@create') }}">
                                                 <span class="glyphicon glyphicon-plus"></span> @lang('messages.create')
                                             </a>

@@ -18,13 +18,13 @@ class CreateProductsTable extends Migration {
             $table->decimal('unit_price_in_leva', 10, 3);
             $table->string('unit', 45);
             $table->decimal('available_quantity', 10, 4);
-            $table->unsignedInteger('category_id');
-            $table->unsignedInteger('storehouse_id');
+            $table->unsignedInteger('category_id')->nullable();
+            $table->unsignedInteger('storehouse_id')->nullable();
 
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('product_categories');
-            $table->foreign('storehouse_id')->references('id')->on('storehouses');
+            $table->foreign('category_id')->references('id')->on('product_categories')->onDelete('set null');
+            $table->foreign('storehouse_id')->references('id')->on('storehouses')->onDelete('set null');
         });
     }
 

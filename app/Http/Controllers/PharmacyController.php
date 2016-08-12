@@ -40,7 +40,8 @@ class PharmacyController extends Controller {
         $this->validate($request, [
             'name' => 'required|max:255',
             'uic' => 'required|unique:pharmacies|max:13|min:9',
-            'accountable_person_name' => 'required|max:255'
+            'accountable_person_name' => 'required|max:255',
+            'phone' => 'max:20'
         ]);
 
         $input = $request->all();
@@ -88,7 +89,8 @@ class PharmacyController extends Controller {
         $this->validate($request, [
             'name' => 'required|max:255',
             'uic' => 'required|max:13|min:9',
-            'accountable_person_name' => 'required|max:255'
+            'accountable_person_name' => 'required|max:255',
+            'phone' => 'max:20'
         ]);
 
         $input = $request->all();

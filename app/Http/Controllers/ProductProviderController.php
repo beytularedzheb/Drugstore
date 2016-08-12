@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
-use App\Product;
+use App\ProductProvider;
 
-class ProductController extends Controller {
+class ProductProviderController extends Controller {
 
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $products = Product::all();
-        return view('admin.product.index')
-                        ->with('products', $products);
+        $productProviders = ProductProvider::all();
+        return view('admin.productProvider.index')
+                        ->with('productProviders', $productProviders);
     }
 
     /**
@@ -26,7 +26,7 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('admin.product.create');
+        return view('admin.productProvider.create');
     }
 
     /**
@@ -39,17 +39,15 @@ class ProductController extends Controller {
 
         $this->validate($request, [
             'name' => 'required|max:255',
-            'unit_price_in_leva' => 'required|numeric|min:0',
-            'unit' => 'required|max:45',
-            'available_quantity' => 'required|numeric|min:0',
-            'category_id' => 'required|exists:product_categories,id',
-            'storehouse_id' => 'required|exists:storehouses,id',
+            'uic' => 'required|unique:product_providers|max:13|min:9',
+            'accountable_person_name' => 'required|max:255',
+            'phone' => 'max:20'
         ]);
 
         $input = $request->all();
-        Product::create($input);
+        ProductProvider::create($input);
 
-        Session::flash('flash_message', 'Product successfully added!');
+        Session::flash('flash_message', 'Product Provider successfully added!');
 
         return redirect()->back();
     }
@@ -61,8 +59,10 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        $product = Product::findOrFail($id);
-        return view('admin.product.show')->with('product', $product);
+        $productProvider = ProductProvider::findOrFail($id);
+
+        Session::flash('flash_message', 'Product Provider successfully loaded!');
+        return view('admin.productProvider.show')->with('productProvider', $productProvider);
     }
 
     /**
@@ -72,8 +72,8 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        $product = Product::findOrFail($id);
-        return view('admin.product.edit')->with('product', $product);
+        $productProvider = ProductProvider::findOrFail($id);
+        return view('admin.productProvider.edit')->with('productProvider', $productProvider);
     }
 
     /**
@@ -84,21 +84,19 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        $product = Product::findOrFail($id);
+        $productProvider = ProductProvider::findOrFail($id);
 
         $this->validate($request, [
             'name' => 'required|max:255',
-            'unit_price_in_leva' => 'required|numeric|min:0',
-            'unit' => 'required|max:45',
-            'available_quantity' => 'required|numeric|min:0',
-            'category_id' => 'required|exists:product_categories,id',
-            'storehouse_id' => 'required|exists:storehouses,id',
+            'uic' => 'required|unique:product_providers|max:13|min:9',
+            'accountable_person_name' => 'required|max:255',
+            'phone' => 'max:20'
         ]);
 
         $input = $request->all();
-        $product->update($input);
+        $productProvider->update($input);
 
-        Session::flash('flash_message', 'Product successfully updated!');
+        Session::flash('flash_message', 'Product Provider successfully updated!');
 
         return redirect()->back();
     }
@@ -110,13 +108,13 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $product = Product::findOrFail($id);
+        $productProvider = ProductProvider::findOrFail($id);
 
-        $product->delete();
+        $productProvider->delete();
 
-        Session::flash('flash_message', 'Product successfully deleted!');
+        Session::flash('flash_message', 'Product Provider successfully deleted!');
 
-        return redirect()->action('ProductController@index');
+        return redirect()->action('ProductProviderController@index');
     }
 
 }

@@ -17,10 +17,10 @@ class Product extends Model {
     ];
     
     public function productCategory() {
-        return $this.belongsTo('App\ProductCategory', 'category_id');
+        return $this->belongsTo('App\ProductCategory', 'category_id');
     }
     
     public function storehouse() {
-        return $this.belongsTo('App\Storehouse', 'storehouse_id');
+        return $this->belongsTo('App\Storehouse', 'storehouse_id');
     }
 }

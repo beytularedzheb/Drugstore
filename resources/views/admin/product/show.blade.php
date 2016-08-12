@@ -22,31 +22,34 @@
                                     </tr>
                                     <tr>
                                         <th>@lang('messages.description')</th>
-                                        <td><span class="glyphicon glyphicon-barcode"></span> {{ $product->description }}</td>
+                                        <td><span class="glyphicon glyphicon-list-alt"></span> {{ $product->description }}</td>
                                     </tr>
                                     <tr>
                                         <th>@lang('messages.unit_price_in_leva')</th>
-                                        <td><span class="glyphicon glyphicon-user"></span> {{ $product->unit_price_in_leva }}</td>
+                                        <td><span class="glyphicon glyphicon-usd"></span> {{ $product->unit_price_in_leva }}</td>
                                     </tr>
                                     <tr>
                                         <th>@lang('messages.unit')</th>
-                                        <td><span class="glyphicon glyphicon-home"></span> {{ $product->unit }}</td>
+                                        <td>{{ $product->unit }}</td>
                                     </tr>
                                     <tr>
                                         <th>@lang('messages.available_quantity')</th>
-                                        <td><span class="glyphicon glyphicon-earphone"></span> {{ $product->available_quantity }}</td>
+                                        <td>{{ $product->available_quantity }}</td>
                                     </tr>
                                     <tr>
                                         <th>{{ trans_choice('messages.product_categories', 1) }}</th>
                                         <td>
-                                            <span class="glyphicon glyphicon-earphone"></span> 
+                                            @if (isset($product->category_id))
                                             <a class="btn btn-link" href="{{ action('ProductCategoryController@show', $product->category_id) }}">{{ $product->productCategory->name }}</a>
+                                            @endif
                                         </td>
                                     <tr>
                                         <th>{{ trans_choice('messages.storehouses', 1) }}</th>
                                         <td>
+                                            @if (isset($product->storehouse_id))
                                             <span class="glyphicon glyphicon-earphone"></span>
                                             <a class="btn btn-link" href="{{ action('StorehouseController@show', $product->storehouse_id) }}">{{ $product->storehouse->name }}</a>
+                                            @endif
                                         </td>
                                     </tr>                                    
                                     <tr>

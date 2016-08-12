@@ -23,8 +23,8 @@
                                         <th data-field="email" data-sortable="true">Email</th>
                                         <th data-field="type"  data-sortable="true">Role</th>
                                         <th data-field="created_at" data-sortable="true">Created At</th>
-                                        <th data-field="updated_at"  data-sortable="true">Updated At</th>
-                                        <th data-sortable="false"></th>
+                                        <th data-field="updated_at" data-sortable="true">Updated At</th>
+                                        <th data-switchable="false"></th>
                                     </tr>
                                 </thead>
                                 <tbody>

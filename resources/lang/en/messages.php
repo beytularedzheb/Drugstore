@@ -39,6 +39,7 @@ return [
     'unit' => 'Unit',
     'available_quantity' => 'Available quantity',
     'storehouses' => 'Storehouse|Storehouses',
+    'product_providers' => 'Provider|Providers',
     
     'admin' => 'Admin',
     'admin_panel' => 'Admin Panel',

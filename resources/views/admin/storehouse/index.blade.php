@@ -1,19 +1,19 @@
 @extends('layouts.admin')
 
-@section('title', trans_choice('messages.products', 2))
+@section('title', trans_choice('messages.storehouses', 2))
 
 @section('content')
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">{{ trans_choice('messages.products', 2) }}</h1>
+                    <h1 class="page-header">{{ trans_choice('messages.storehouses', 2) }}</h1>
                 </div>
             </div><!--/.row-->
 
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">{{ trans_choice('messages.products', 2) }}</div>
+                        <div class="panel-heading">{{ trans_choice('messages.storehouses', 2) }}</div>
                         <div class="panel-body">                            
                             <table data-toggle="table" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-pagination="true" data-sort-name="name" data-sort-order="desc">
                                 <thead>
@@ -21,50 +21,46 @@
                                         <th data-field="id" data-sortable="true">@lang('messages.id')</th>
                                         <th data-field="name"  data-sortable="true">@lang('messages.name')</th>
                                         <th data-field="description" data-sortable="true">@lang('messages.description')</th>
-                                        <th data-field="unit_price_in_leva"  data-sortable="true">@lang('messages.unit_price_in_leva')</th>
-                                        <th data-field="unit" data-sortable="true">@lang('messages.unit')</th>
-                                        <th data-field="available_quantity" data-sortable="true">@lang('messages.available_quantity')</th>
-                                        <th data-field="category_id" data-sortable="true">{{ trans_choice('messages.product_categories', 1) }}</th>
-                                        <th data-field="storehouse_id" data-sortable="true">{{ trans_choice('messages.storehouses', 1) }}</th>
+                                        <th data-field="address" data-sortable="true">@lang('messages.address')</th>
+                                        <th data-field="phone" data-sortable="true">@lang('messages.phone')</th>
+                                        <th data-field="pharmacy_id" data-sortable="true">{{ trans_choice('messages.pharmacies', 1) }}</th>
                                         <th data-visible="false" data-field="created_at" data-sortable="true">@lang('messages.created_at')</th>
                                         <th data-visible="false" data-field="updated_at" data-sortable="true">@lang('messages.updated_at')</th>
                                         <th data-switchable="false">
-                                            <a class="btn btn-primary btn-block" href="{{ action('ProductController@create') }}">
+                                            <a class="btn btn-primary btn-block" href="{{ action('StorehouseController@create') }}">
                                                 <span class="glyphicon glyphicon-plus"></span> @lang('messages.create')
                                             </a>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($products as $key => $product)
+                                    @foreach($storehouses as $key => $storehouse)
 
                                     <tr>
-                                        <td>{{ $product->id }}</td>
-                                        <td>{{ $product->name }}</td>
-                                        <td>{{ $product->description }}</td>
-                                        <td>{{ $product->unit_price_in_leva }}</td>
-                                        <td>{{ $product->unit }}</td>
-                                        <td>{{ $product->available_quantity }}</td>
-                                        <td>{{ $product->productCategory->name or '' }}</td>
-                                        <td>{{ $product->storehouse->name or '' }}</td>
-                                        <td>{{ $product->created_at }}</td>
-                                        <td>{{ $product->updated_at }}</td>
+                                        <td>{{ $storehouse->id }}</td>
+                                        <td>{{ $storehouse->name }}</td>
+                                        <td>{{ $storehouse->description }}</td>
+                                        <td>{{ $storehouse->address }}</td>
+                                        <td>{{ $storehouse->phone }}</td>
+                                        <td>{{ $storehouse->pharmacy->name or '' }}</td>
+                                        <td>{{ $storehouse->created_at }}</td>
+                                        <td>{{ $storehouse->updated_at }}</td>
                                         <td class="text-center">
-                                            {!! Form::open(['method' => 'DELETE', 'route' => ['product.destroy', $product->id]]) !!}
+                                            {!! Form::open(['method' => 'DELETE', 'route' => ['storehouse.destroy', $storehouse->id]]) !!}
                                             <div class="btn-group" role="group" aria-label="Basic example">
                                                 <a class="btn btn-primary" 
-                                                   href="{{ action('ProductController@show', $product->id) }}"
+                                                   href="{{ action('StorehouseController@show', $storehouse->id) }}"
                                                    title="{{ trans('messages.view') }}"
                                                    >
                                                     <span class="glyphicon glyphicon-eye-open"></span>
                                                 </a>
                                                 <a class="btn btn-primary" 
-                                                   href="{{ action('ProductController@edit', $product->id) }}"
+                                                   href="{{ action('StorehouseController@edit', $storehouse->id) }}"
                                                    title="{{ trans('messages.edit') }}"                                                
                                                    >
                                                     <span class="glyphicon glyphicon-pencil"></span>
                                                 </a>
-                                                <button type="submit" title="{{ trans('messages.delete') }}" class="btn btn-primary" onclick="return confirm('{{ trans('messages.confirm_delete', ['delete_wath' => $product->name]) }}');">
+                                                <button type="submit" title="{{ trans('messages.delete') }}" class="btn btn-primary" onclick="return confirm('{{ trans('messages.confirm_delete', ['delete_wath' => $storehouse->name]) }}');">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </button>
                                             </div>

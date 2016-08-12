@@ -22,9 +22,9 @@
                                         <th data-field="name"  data-sortable="true">@lang('messages.name')</th>
                                         <th data-field="disease" data-sortable="true">@lang('messages.disease')</th>
                                         <th data-field="ward"  data-sortable="true">{{ trans_choice('messages.wards', 1) }}</th>
-                                        <th data-field="created_at" data-sortable="true">@lang('messages.created_at')</th>
-                                        <th data-field="updated_at" data-sortable="true">@lang('messages.updated_at')</th>
-                                        <th data-sortable="false">
+                                        <th data-visible="false" data-field="created_at" data-sortable="true">@lang('messages.created_at')</th>
+                                        <th data-visible="false" data-field="updated_at" data-sortable="true">@lang('messages.updated_at')</th>
+                                        <th data-switchable="false">
                                             <a class="btn btn-primary btn-block" href="{{ action('PatientController@create') }}">
                                                 <span class="glyphicon glyphicon-plus"></span> @lang('messages.create')
                                             </a>
@@ -38,7 +38,7 @@
                                         <td>{{ $patient->id }}</td>
                                         <td>{{ $patient->name }}</td>
                                         <td>{{ $patient->disease }}</td>
-                                        <td>{{ $patient->ward->name }}</td>
+                                        <td>{{ $patient->ward->name or '' }}</td>
                                         <td>{{ $patient->created_at }}</td>
                                         <td>{{ $patient->updated_at }}</td>
                                         <td class="text-center">

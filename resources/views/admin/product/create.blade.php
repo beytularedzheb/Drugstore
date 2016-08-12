@@ -27,13 +27,13 @@
                             @include('partials.rows.label-number', ['fieldname' => 'available_quantity', 'label' => trans('messages.available_quantity')])
                             @include('partials.rows.label-select', [
                                 'fieldname' => 'category_id', 
-                                'label' => trans_choice('messages.product_categories', 2),
-                                'select_items' => App\ProductCategory::all(),
+                                'label' => trans_choice('messages.product_categories', 1),
+                                'select_items' => App\ProductCategory::pluck('name', 'id'),
                             ])
                             @include('partials.rows.label-select', [
                                 'fieldname' => 'storehouse_id', 
-                                'label' => trans_choice('messages.storehouses', 2),
-                                'select_items' => App\Storehouse::all(),
+                                'label' => trans_choice('messages.storehouses', 1),
+                                'select_items' => App\Storehouse::pluck('name', 'id'),
                             ])    
                         </div>
                         

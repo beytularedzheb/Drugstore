@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
-use App\Product;
+use App\Storehouse;
 
-class ProductController extends Controller {
+class StorehouseController extends Controller {
 
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $products = Product::all();
-        return view('admin.product.index')
-                        ->with('products', $products);
+        $storehouses = Storehouse::all();
+        return view('admin.storehouse.index')
+                        ->with('storehouses', $storehouses);
     }
 
     /**
@@ -26,7 +26,7 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('admin.product.create');
+        return view('admin.storehouse.create');
     }
 
     /**
@@ -39,17 +39,14 @@ class ProductController extends Controller {
 
         $this->validate($request, [
             'name' => 'required|max:255',
-            'unit_price_in_leva' => 'required|numeric|min:0',
-            'unit' => 'required|max:45',
-            'available_quantity' => 'required|numeric|min:0',
-            'category_id' => 'required|exists:product_categories,id',
-            'storehouse_id' => 'required|exists:storehouses,id',
+            'phone' => 'max:20',
+            'pharmacy_id' => 'required|exists:pharmacies,id',
         ]);
 
         $input = $request->all();
-        Product::create($input);
+        Storehouse::create($input);
 
-        Session::flash('flash_message', 'Product successfully added!');
+        Session::flash('flash_message', 'Storehouse successfully added!');
 
         return redirect()->back();
     }
@@ -61,8 +58,8 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        $product = Product::findOrFail($id);
-        return view('admin.product.show')->with('product', $product);
+        $storehouse = Storehouse::findOrFail($id);
+        return view('admin.storehouse.show')->with('storehouse', $storehouse);
     }
 
     /**
@@ -72,8 +69,8 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        $product = Product::findOrFail($id);
-        return view('admin.product.edit')->with('product', $product);
+        $storehouse = Storehouse::findOrFail($id);
+        return view('admin.storehouse.edit')->with('storehouse', $storehouse);
     }
 
     /**
@@ -84,21 +81,18 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        $product = Product::findOrFail($id);
+        $storehouse = Storehouse::findOrFail($id);
 
         $this->validate($request, [
-            'name' => 'required|max:255',
-            'unit_price_in_leva' => 'required|numeric|min:0',
-            'unit' => 'required|max:45',
-            'available_quantity' => 'required|numeric|min:0',
-            'category_id' => 'required|exists:product_categories,id',
-            'storehouse_id' => 'required|exists:storehouses,id',
+            'name' => 'max:255',
+            'phone' => 'max:20',
+            'pharmacy_id' => 'required|exists:pharmacies,id',
         ]);
 
         $input = $request->all();
-        $product->update($input);
+        $storehouse->update($input);
 
-        Session::flash('flash_message', 'Product successfully updated!');
+        Session::flash('flash_message', 'Storehouse successfully updated!');
 
         return redirect()->back();
     }
@@ -110,13 +104,13 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $product = Product::findOrFail($id);
+        $storehouse = Storehouse::findOrFail($id);
 
-        $product->delete();
+        $storehouse->delete();
 
-        Session::flash('flash_message', 'Product successfully deleted!');
+        Session::flash('flash_message', 'Storehouse successfully deleted!');
 
-        return redirect()->action('ProductController@index');
+        return redirect()->action('StorehouseController@index');
     }
 
 }

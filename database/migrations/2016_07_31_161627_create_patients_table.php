@@ -16,11 +16,11 @@ class CreatePatientsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('disease');
-            $table->unsignedInteger('ward_id');
+            $table->unsignedInteger('ward_id')->nullable();
             
             $table->timestamps();
             
-            $table->foreign('ward_id')->references('id')->on('wards');
+            $table->foreign('ward_id')->references('id')->on('wards')->onDelete('set null');
         });
     }
 

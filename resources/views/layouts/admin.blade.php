@@ -91,7 +91,17 @@
                             <a class="" href="{{ action('ProductController@index') }}">
                                 <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.products', 2) }}
                             </a>
-                        </li>                        
+                        </li>
+                        <li>
+                            <a class="" href="{{ action('StorehouseController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.storehouses', 2) }}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="{{ action('ProductProviderController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.product_providers', 2) }}
+                            </a>
+                        </li> 
                     </ul>
                 </li>
                 <li role="presentation" class="divider"></li>

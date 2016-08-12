@@ -39,6 +39,7 @@ return [
     'unit' => 'Единица',
     'available_quantity' => 'Налично количество',
     'storehouses' => 'Склад|Складове',
+    'product_providers' => 'Доставчик|Доставчици',
     
     'admin' => 'Админ',
     'admin_panel' => 'Администраторски панел',

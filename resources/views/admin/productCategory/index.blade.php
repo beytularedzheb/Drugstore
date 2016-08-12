@@ -21,9 +21,9 @@
                                         <th data-field="id" data-sortable="true">@lang('messages.id')</th>
                                         <th data-field="name"  data-sortable="true">@lang('messages.name')</th>
                                         <th data-field="description" data-sortable="true">@lang('messages.description')</th>
-                                        <th data-field="created_at" data-sortable="true">@lang('messages.created_at')</th>
-                                        <th data-field="updated_at" data-sortable="true">@lang('messages.updated_at')</th>
-                                        <th data-sortable="false">
+                                        <th data-visible="false" data-field="created_at" data-sortable="true">@lang('messages.created_at')</th>
+                                        <th data-visible="false" data-field="updated_at" data-sortable="true">@lang('messages.updated_at')</th>
+                                        <th data-switchable="false">
                                             <a class="btn btn-primary btn-block" href="{{ action('ProductCategoryController@create') }}">
                                                 <span class="glyphicon glyphicon-plus"></span> @lang('messages.create')
                                             </a>

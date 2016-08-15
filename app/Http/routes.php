@@ -69,6 +69,12 @@ Route::group(['middlewareGroups' => 'web'], function () {
                     'update' => 'productProvider.update',
                     'destroy' => 'productProvider.destroy'
             ]]);
+            
+            Route::resource('pharmacyOrder', 'PharmacyOrderController', ['names' => [
+                    'store' => 'pharmacyOrder.store',
+                    'update' => 'pharmacyOrder.update',
+                    'destroy' => 'pharmacyOrder.destroy'
+            ]]);            
         });
     });
 });

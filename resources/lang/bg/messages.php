@@ -40,6 +40,12 @@ return [
     'available_quantity' => 'Налично количество',
     'storehouses' => 'Склад|Складове',
     'product_providers' => 'Доставчик|Доставчици',
+    'pharmacy_orders' => 'Поръчкa на аптека|Поръчки на аптека',
+    'issue_date' => 'Дата на поръчка',
+    'issuers' => 'Доставчик|Доставчици',
+    'customers' => 'Клиент|Клиенти',
+    'sender' => 'Изпращач',
+    'receiver' => 'Получател',
     
     'admin' => 'Админ',
     'admin_panel' => 'Администраторски панел',

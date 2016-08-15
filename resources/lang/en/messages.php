@@ -40,6 +40,12 @@ return [
     'available_quantity' => 'Available quantity',
     'storehouses' => 'Storehouse|Storehouses',
     'product_providers' => 'Provider|Providers',
+    'pharmacy_orders' => 'Pharmacy order|Pharmacy orders',
+    'issue_date' => 'Issue date',
+    'issuers' => 'Issuer|Issuers',
+    'customers' => 'Customer|Cusomers',
+    'sender' => 'Sender',
+    'receiver' => 'Receiver',
     
     'admin' => 'Admin',
     'admin_panel' => 'Admin Panel',

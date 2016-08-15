@@ -8,7 +8,6 @@
         <title>@yield('title')</title>
 
         <link href="{{ URL::asset('assets/css/bootstrap.css') }}" rel="stylesheet">
-        <link href="{{ URL::asset('assets/css/datepicker3.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('assets/css/bootstrap-table.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('assets/css/styles.css') }}" rel="stylesheet">
 
@@ -101,7 +100,12 @@
                             <a class="" href="{{ action('ProductProviderController@index') }}">
                                 <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.product_providers', 2) }}
                             </a>
-                        </li> 
+                        </li>
+                        <li>
+                            <a class="" href="{{ action('PharmacyOrderController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.pharmacy_orders', 2) }}
+                            </a>
+                        </li>                         
                     </ul>
                 </li>
                 <li role="presentation" class="divider"></li>

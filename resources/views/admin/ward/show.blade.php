@@ -37,6 +37,18 @@
                                         <td><span class="glyphicon glyphicon-earphone"></span> {{ $ward->phone }}</td>
                                     </tr>
                                     <tr>
+                                        <th>{{ trans_choice('messages.patients', 2) }}</th>
+                                        <td>
+                                            @if(isset($ward->patients))
+                                            <ul class="list-unstyled">
+                                                @foreach($ward->patients as $key => $patient)
+                                                <li><a class="btn btn-link" href="{{ action('PatientController@show', $patient->id) }}">{{ $patient->name }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                            @endif
+                                        </td>
+                                    </tr> 
+                                    <tr>
                                         <th>@lang('messages.created_at')</th>
                                         <td><span class="glyphicon glyphicon-time"></span> {{ $ward->created_at }}</td>
                                     </tr>

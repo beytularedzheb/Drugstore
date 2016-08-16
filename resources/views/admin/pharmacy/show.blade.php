@@ -37,6 +37,18 @@
                                         <td><span class="glyphicon glyphicon-earphone"></span> {{ $pharmacy->phone }}</td>
                                     </tr>
                                     <tr>
+                                        <th>{{ trans_choice('messages.storehouses', 2) }}</th>
+                                        <td>
+                                            @if(isset($pharmacy->storehouses))
+                                            <ul class="list-unstyled">
+                                                @foreach($pharmacy->storehouses as $key => $storehouse)
+                                                <li><a class="btn btn-link" href="{{ action('StorehouseController@show', $storehouse->id) }}">{{ $storehouse->name }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                            @endif
+                                        </td>
+                                    </tr> 
+                                    <tr>
                                         <th>@lang('messages.created_at')</th>
                                         <td><span class="glyphicon glyphicon-time"></span> {{ $pharmacy->created_at }}</td>
                                     </tr>

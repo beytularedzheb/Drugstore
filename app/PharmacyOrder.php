@@ -21,4 +21,8 @@ class PharmacyOrder extends Model {
     public function customer() {
         return $this->belongsTo('App\Pharmacy', 'customer_id');
     }
+    
+    public function orderLines() {
+        return $this->hasMany('App\PharmacyOrderLine', 'pharmacy_order_id');
+    }
 }

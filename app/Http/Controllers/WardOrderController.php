@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
-use App\PharmacyOrder;
+use App\WardOrder;
 
-class PharmacyOrderController extends Controller {
+class WardOrderController extends Controller {
 
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class PharmacyOrderController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $pharmacyOrders = PharmacyOrder::all();
-        return view('admin.pharmacyOrder.index')
-                        ->with('pharmacyOrders', $pharmacyOrders);
+        $wardOrders = WardOrder::all();
+        return view('admin.wardOrder.index')
+                        ->with('wardOrders', $wardOrders);
     }
 
     /**
@@ -26,7 +26,7 @@ class PharmacyOrderController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('admin.pharmacyOrder.create');
+        return view('admin.wardOrder.create');
     }
 
     /**
@@ -38,20 +38,22 @@ class PharmacyOrderController extends Controller {
     public function store(Request $request) {
 
         $this->validate($request, [
-            'receiver_name' => 'required|max:255',
+            'receiver_name' => 'max:255',
             'sender_name' => 'required|max:255',
-            'issuer_id' => 'required|exists:product_providers,id',
-            'customer_id' => 'required|exists:pharmacies,id'
+            'state' => 'in:confirmed,rejected,sent',
+            'requester_id' => 'required|exists:wards,id',
+            'requested_from_id' => 'required|exists:pharmacies,id',
+            'requested_for_id' => 'required|exists:patients,id'
         ]);
 
         $input = $request->all();
-        $id = PharmacyOrder::create($input)->id;
+        $id = WardOrder::create($input)->id;
         
-        $pharmacyOrder = PharmacyOrder::find($id);
-        $pharmacyOrder->issue_date = \Carbon\Carbon::now();
-        $pharmacyOrder->save();
+        $wardOrder = WardOrder::find($id);
+        $wardOrder->issue_date = \Carbon\Carbon::now();
+        $wardOrder->save();
         
-        Session::flash('flash_message', 'Pharmacy Order successfully added!');
+        Session::flash('flash_message', 'Ward Order successfully added!');
 
         return redirect()->back();
     }
@@ -63,10 +65,10 @@ class PharmacyOrderController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        $pharmacyOrder = PharmacyOrder::findOrFail($id);
+        $wardOrder = WardOrder::findOrFail($id);
 
-        Session::flash('flash_message', 'PharmacyOrder successfully loaded!');
-        return view('admin.pharmacyOrder.show')->with('pharmacyOrder', $pharmacyOrder);
+        Session::flash('flash_message', 'WardOrder successfully loaded!');
+        return view('admin.wardOrder.show')->with('wardOrder', $wardOrder);
     }
 
     /**
@@ -76,8 +78,8 @@ class PharmacyOrderController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        $pharmacyOrder = PharmacyOrder::findOrFail($id);
-        return view('admin.pharmacyOrder.edit')->with('pharmacyOrder', $pharmacyOrder);
+        $wardOrder = WardOrder::findOrFail($id);
+        return view('admin.wardOrder.edit')->with('wardOrder', $wardOrder);
     }
 
     /**
@@ -88,19 +90,21 @@ class PharmacyOrderController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        $pharmacyOrder = PharmacyOrder::findOrFail($id);
+        $wardOrder = WardOrder::findOrFail($id);
 
         $this->validate($request, [
-            'receiver_name' => 'required|max:255',
+            'receiver_name' => 'max:255',
             'sender_name' => 'required|max:255',
-            'issuer_id' => 'required|exists:product_providers,id',
-            'customer_id' => 'required|exists:pharmacies,id'
+            'state' => 'in:confirmed,rejected,sent',
+            'requester_id' => 'required|exists:wards,id',
+            'requested_from_id' => 'required|exists:pharmacies,id',
+            'requested_for_id' => 'required|exists:patients,id'
         ]);
 
         $input = $request->all();
-        $pharmacyOrder->update($input);
+        $wardOrder->update($input);
 
-        Session::flash('flash_message', 'Pharmacy Order successfully updated!');
+        Session::flash('flash_message', 'Ward Order successfully updated!');
 
         return redirect()->back();
     }
@@ -112,13 +116,12 @@ class PharmacyOrderController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $pharmacyOrder = PharmacyOrder::findOrFail($id);
+        $wardOrder = WardOrder::findOrFail($id);
 
-        $pharmacyOrder->delete();
+        $wardOrder->delete();
 
-        Session::flash('flash_message', 'Pharmacy Order successfully deleted!');
+        Session::flash('flash_message', 'Ward Order successfully deleted!');
 
-        return redirect()->action('PharmacyOrderController@index');
+        return redirect()->action('WardOrderController@index');
     }
-
 }

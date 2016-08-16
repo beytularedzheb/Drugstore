@@ -105,7 +105,22 @@
                             <a class="" href="{{ action('PharmacyOrderController@index') }}">
                                 <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.pharmacy_orders', 2) }}
                             </a>
-                        </li>                         
+                        </li>
+                        <li>
+                            <a class="" href="{{ action('PharmacyOrderLineController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.pharmacy_order_lines', 2) }}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="{{ action('WardOrderController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.ward_orders', 2) }}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="{{ action('WardOrderLineController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.ward_order_lines', 2) }}
+                            </a>
+                        </li>  
                     </ul>
                 </li>
                 <li role="presentation" class="divider"></li>

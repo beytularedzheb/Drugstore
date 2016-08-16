@@ -74,7 +74,25 @@ Route::group(['middlewareGroups' => 'web'], function () {
                     'store' => 'pharmacyOrder.store',
                     'update' => 'pharmacyOrder.update',
                     'destroy' => 'pharmacyOrder.destroy'
-            ]]);            
+            ]]);
+            
+            Route::resource('pharmacyOrderLine', 'PharmacyOrderLineController', ['names' => [
+                    'store' => 'pharmacyOrderLine.store',
+                    'update' => 'pharmacyOrderLine.update',
+                    'destroy' => 'pharmacyOrderLine.destroy'
+            ]]);
+            
+            Route::resource('wardOrder', 'WardOrderController', ['names' => [
+                    'store' => 'wardOrder.store',
+                    'update' => 'wardOrder.update',
+                    'destroy' => 'wardOrder.destroy'
+            ]]);
+            
+            Route::resource('wardOrderLine', 'WardOrderLineController', ['names' => [
+                    'store' => 'wardOrderLine.store',
+                    'update' => 'wardOrderLine.update',
+                    'destroy' => 'wardOrderLine.destroy'
+            ]]);
         });
     });
 });

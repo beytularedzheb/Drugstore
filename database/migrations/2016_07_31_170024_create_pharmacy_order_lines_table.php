@@ -12,6 +12,7 @@ class CreatePharmacyOrderLinesTable extends Migration {
      */
     public function up() {
         Schema::create('pharmacy_order_lines', function (Blueprint $table) {
+            $table->increments('id');
             $table->unsignedInteger('pharmacy_order_id')->nullable();
             $table->unsignedInteger('product_id')->nullable();
             $table->decimal('quantity', 10, 4);

@@ -13,4 +13,8 @@ class Pharmacy extends Model
         'address',
         'phone'
     ];
+    
+    public function storehouses() {
+        return $this->hasMany('App\Storehouse', 'pharmacy_id');
+    }
 }

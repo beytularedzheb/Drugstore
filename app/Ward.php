@@ -13,4 +13,8 @@ class Ward extends Model
         'address',
         'phone'
     ];
+    
+    public function patients() {
+        return $this->hasMany('App\Patient', 'ward_id');
+    }
 }

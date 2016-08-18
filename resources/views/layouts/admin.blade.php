@@ -7,7 +7,7 @@
 
         <title>@yield('title')</title>
 
-        <link href="{{ URL::asset('assets/css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('assets/css/bootstrap-table.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('assets/css/styles.css') }}" rel="stylesheet">
 

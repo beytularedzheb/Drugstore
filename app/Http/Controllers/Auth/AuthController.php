@@ -36,7 +36,7 @@ use AuthenticatesAndRegistersUsers,
      *
      * @var string
      */
-    //protected $redirectAfterLogout = '/login';
+    protected $redirectAfterLogout = '/login';
 
     /**
      * Create a new authentication controller instance.
@@ -80,5 +80,12 @@ use AuthenticatesAndRegistersUsers,
             return redirect('/admin');
         }
         return redirect('/');
+    }
+    
+    protected function logout() {
+        \Illuminate\Support\Facades\Session::flush();
+        auth()->logout(); 
+        
+        return redirect($this->redirectAfterLogout);
     }
 }

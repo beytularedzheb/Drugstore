@@ -15,14 +15,22 @@ Route::group(['middlewareGroups' => 'web'], function () {
 
     Route::auth();
     Route::get('/', 'HomeController@index');
-
+    
     Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/admin', [
             'uses' => 'AdminController@index',
             'as' => 'admin',
         ]);
-
+        
+        Route::group(['prefix' => 'customer'], function () {
+            Route::resource('product', 'Customer\ProductController', [
+                'only' => ['index', 'show']
+            ]);
+            
+            Route::controller('cart', 'Customer\ShoppingCartController');
+        });
+        
         Route::group(['prefix' => 'admin'], function () {
             Route::resource('user', 'UserController', [
                 'only' => ['index', 'show']

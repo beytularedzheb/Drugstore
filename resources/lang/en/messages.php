@@ -54,6 +54,13 @@ return [
     'requested_for' => 'Requested for',
     'state' => 'State',
     'ward_order_lines' => 'Ward Order Item|Ward Order Items',
+    'cart' => 'Cart',
+    'subtotal' => 'Subtotal',
+    'total' => 'Total',
+    'product_in_cart' => 'You have :quantity x :product_name in your cart!',
+    'add_to_cart' => 'Add to cart',
+    'quantity_updated' => 'Quantity updated!',
+    'price' => 'Price',
     
     'admin' => 'Admin',
     'admin_panel' => 'Admin Panel',

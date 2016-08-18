@@ -54,6 +54,13 @@ return [
     'requested_for' => 'Поръчан за',
     'state' => 'Състояние',
     'ward_order_lines' => 'Продукт-поръчка|продукти-поръчки',
+    'cart' => 'Количка',
+    'subtotal' => 'Стойност',
+    'total' => 'Обща стойност', 
+    'product_in_cart' => 'Имате :quantity х :product_name в кошницата ви!',
+    'add_to_cart' => 'Добави в коша',
+    'quantity_updated' => 'Количеството е обновено!',
+    'price' => 'Цена',
     
     'admin' => 'Админ',
     'admin_panel' => 'Администраторски панел',

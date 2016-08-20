@@ -76,16 +76,19 @@ use AuthenticatesAndRegistersUsers,
     }
 
     protected function authenticated(Request $request, User $user) {
-        if ($user->type === 'admin') {
+        if ($user->hasRole('admin')) {
             return redirect('/admin');
+        } else if ($user->hasRole('customer')) {
+            return redirect('/customer');
         }
         return redirect('/');
     }
-    
+
     protected function logout() {
-        \Illuminate\Support\Facades\Session::flush();
-        auth()->logout(); 
-        
+        \Illuminate\Support\Facades\Session::invalidate();
+        auth()->logout();
+
         return redirect($this->redirectAfterLogout);
     }
+
 }

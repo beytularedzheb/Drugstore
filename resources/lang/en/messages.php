@@ -2,6 +2,7 @@
 
 return [
     'app_name' => 'Hospital Pharmacy - "Х"',
+    'hi_username' => 'Hi, :name!',
     'users' => 'User|Users',
     'profile' => 'Profile',
     'settings' => 'Settings',
@@ -61,6 +62,7 @@ return [
     'add_to_cart' => 'Add to cart',
     'quantity_updated' => 'Quantity updated!',
     'price' => 'Price',
+    'no_user_permission' => 'You have no permission to access!',
     
     'admin' => 'Admin',
     'admin_panel' => 'Admin Panel',

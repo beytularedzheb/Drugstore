@@ -13,9 +13,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">XXXXXXX</div>
+                        <div class="panel-heading">@lang('messages.ward_table')</div>
                         <div class="panel-body">                            
-                            <table data-toggle="table" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+                            <table data-toggle="table" data-show-toggle="true" data-show-columns="true" data-search="true" data-pagination="true" data-sort-name="name" data-sort-order="desc">
                                 <thead>
                                     <tr>
                                         <th data-field="id" data-sortable="true">@lang('messages.id')</th>

@@ -19,15 +19,13 @@ Route::group(['middlewareGroups' => 'web'], function () {
     Route::group(['middleware' => 'auth'], function () {
 
         Route::group(['prefix' => 'customer'], function () {
-            
+
             Route::get('/', [
                 'uses' => 'CustomerController@index',
                 'as' => 'customer',
             ]);
 
-            Route::resource('product', 'Customer\ProductController', [
-                'only' => ['index', 'show']
-            ]);
+            Route::controller('product', 'Customer\ProductController');
 
             Route::controller('cart', 'Customer\ShoppingCartController');
         });
@@ -42,7 +40,6 @@ Route::group(['middlewareGroups' => 'web'], function () {
 
                 Route::get('/', [
                     'uses' => 'AdminController@index',
-                    'as' => 'admin',
                 ]);
 
                 Route::resource('pharmacy', 'PharmacyController', ['names' => [

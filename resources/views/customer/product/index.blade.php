@@ -4,9 +4,30 @@
 
 @section('content')
 
-<div class="row">
+<div class="well well-sm">
+    {!! Form::open(['method' => 'POST']) !!}
+    
+    <button type="submit" class="btn btn-success" style="margin-right: 1em;">
+        {{ trans('messages.filter') }}
+        <span class="glyphicon glyphicon-filter"></span>
+    </button>
+    
+    @foreach($productCategories as $category)
+    <label class="checkbox-inline text-success text-capitalize">
+        {!! Form::checkbox('selected_category[]', 
+        $category->id, 
+        isset($selected_categories) && $selected_categories->contains($category)) 
+        !!}
+        {{ $category->name }}
+    </label>
+    @endforeach
 
-    @foreach($products as $key => $product)
+    {!! Form::close() !!}
+</div>
+
+@foreach($products->chunk(3) as $chunk)
+<div class="row">
+    @foreach($chunk as $product)
 
     {!! Form::open(['method' => 'POST', 'action' => ['Customer\ShoppingCartController@postAdd', $product->id]]) !!}
 
@@ -25,5 +46,5 @@
     @endforeach
 
 </div>
-
+@endforeach
 @endsection

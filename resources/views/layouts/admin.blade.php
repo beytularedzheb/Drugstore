@@ -34,10 +34,10 @@
                     <a class="navbar-brand" href="#"><span>@lang('messages.app_name')</span> (@lang('messages.admin'))</a>
                     <ul class="user-menu">
                         <li class="dropdown pull-right">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> {{ Auth::user()->name }} <span class="caret"></span></a>
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> {{ Auth::user()->name }} <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> @lang('messages.profile')</a></li>
-                                <li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> @lang('messages.settings')</a></li>
+                                <li><a href="{{ action('UserController@show', auth()->user()->id) }}"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> @lang('messages.profile')</a></li>
+                                <li role="presentation" class="divider"></li>
                                 <li><a href="{{ url('/logout') }}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> @lang('messages.logout')</a></li>
                             </ul>
                         </li>
@@ -47,17 +47,12 @@
             </div><!-- /.container-fluid -->
         </nav>
 
-        <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+        <div id="sidebar-collapse" class="col-sm-3 col-md-3 col-lg-2 sidebar">
             @section('menu')
-            <form role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-            </form>
             <ul class="nav menu">
-                <li class="active"><a href=""><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> @lang('messages.dashboard')</a></li>
+                <li><a href="{{ action('AdminController@index') }}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> @lang('messages.dashboard')</a></li>
                 <li class="parent ">
-                    <a href="#">
+                    <a href="">
                         <span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> @lang('messages.tables')</span>  
                     </a>
                     <ul class="children collapse" id="sub-item-1">
@@ -66,39 +61,10 @@
                                 <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.users', 2) }}
                             </a>
                         </li>
+                        <li role="presentation" class="divider"></li>
                         <li>
                             <a class="" href="{{ action('PharmacyController@index') }}">
                                 <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.pharmacies', 2) }}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="{{ action('WardController@index') }}">
-                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.wards', 2) }}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="{{ action('PatientController@index') }}">
-                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.patients', 2) }}
-                            </a>
-                        </li> 
-                        <li>
-                            <a class="" href="{{ action('ProductCategoryController@index') }}">
-                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.product_categories', 2) }}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="{{ action('ProductController@index') }}">
-                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.products', 2) }}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="{{ action('StorehouseController@index') }}">
-                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.storehouses', 2) }}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="{{ action('ProductProviderController@index') }}">
-                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.product_providers', 2) }}
                             </a>
                         </li>
                         <li>
@@ -111,6 +77,12 @@
                                 <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.pharmacy_order_lines', 2) }}
                             </a>
                         </li>
+                        <li role="presentation" class="divider"></li>
+                        <li>
+                            <a class="" href="{{ action('WardController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.wards', 2) }}
+                            </a>
+                        </li>
                         <li>
                             <a class="" href="{{ action('WardOrderController@index') }}">
                                 <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.ward_orders', 2) }}
@@ -120,7 +92,33 @@
                             <a class="" href="{{ action('WardOrderLineController@index') }}">
                                 <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.ward_order_lines', 2) }}
                             </a>
-                        </li>  
+                        </li> 
+                        <li>
+                            <a class="" href="{{ action('PatientController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.patients', 2) }}
+                            </a>
+                        </li>
+                        <li role="presentation" class="divider"></li>
+                        <li>
+                            <a class="" href="{{ action('ProductController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.products', 2) }}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="{{ action('ProductCategoryController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.product_categories', 2) }}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="{{ action('StorehouseController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.storehouses', 2) }}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="{{ action('ProductProviderController@index') }}">
+                                <svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans_choice('messages.product_providers', 2) }}
+                            </a>
+                        </li> 
                     </ul>
                 </li>
                 <li role="presentation" class="divider"></li>
@@ -129,7 +127,7 @@
             @show
         </div><!--/.sidebar-->
 
-        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 col-lg-10 col-lg-offset-2 main">
             @yield('content')
         </div><!--/.main-->
 

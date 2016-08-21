@@ -8,7 +8,7 @@
         <title>@yield('title')</title>
 
         <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-
+        
         <!--[if lt IE 9]>
         <script src="{{ URL::asset('assets/js/html5shiv.js') }}"></script>
         <script src="{{ URL::asset('assets/js/respond.min.js') }}"></script>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a href="{{ action('Customer\ProductController@index') }}">{{ trans_choice('messages.products', 2) }}</a></li>
+                        <li><a href="{{ action('Customer\ProductController@getIndex') }}">{{ trans_choice('messages.products', 2) }}</a></li>
                     </ul>
                     <ul class="user-menu nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -64,7 +64,7 @@
         <script src="{{ URL::asset('assets/js/jquery-1.11.1.min.js') }}"></script>
         <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
         <script src="{{ URL::asset('assets/js/bootstrap-spinner.min.js') }}"></script>
-        
+
         @if(Session::has('added_product_message'))
 
         <script>
@@ -77,7 +77,7 @@ $(window).load(function () {
         </script>
 
         @endif
-        
+
         @yield('scripts')
     </body>
 

@@ -30,7 +30,7 @@
 
                 <tr>
                     <td>{{ $index++ }}</td>
-                    <td><a href="{{ action('Customer\ProductController@show', $product->id) }}">{{ $product->name }}</a></td>
+                    <td><a href="{{ action('Customer\ProductController@getShow', $product->id) }}">{{ $product->name }}</a></td>
                     <td style="width: 150px;">
                         {!! Form::open(['method' => 'POST', 'action' => ['Customer\ShoppingCartController@postUpdateQuantityOf', $product->rowid]]) !!}                        
 

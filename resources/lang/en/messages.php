@@ -2,6 +2,8 @@
 
 return [
     'app_name' => 'Hospital Pharmacy - "Х"',
+    'admin' => 'Admin',
+    'admin_panel' => 'Admin Panel',
     'hi_username' => 'Hi, :name!',
     'users' => 'User|Users',
     'profile' => 'Profile',
@@ -63,7 +65,19 @@ return [
     'quantity_updated' => 'Quantity updated!',
     'price' => 'Price',
     'no_user_permission' => 'You have no permission to access!',
+    'password' => 'Password',
+    'filter' => 'Filter',
     
-    'admin' => 'Admin',
-    'admin_panel' => 'Admin Panel',
+    'user_table' => 'Table users',
+    'pharmacy_table' => 'Table hospital pharmacies',
+    'ward_table' => 'Table wards',
+    'patient_table' => 'Table patients',
+    'category_table' => 'Table product categories',
+    'product_table' => 'Table products',
+    'storehouse_table' => 'Table storehouses',
+    'provider_table' => 'Table product providers',
+    'pharmacy_order_table' => 'Table pharmacy orders',
+    'pharmacy_order_item_table' => 'Table products in orders (of pharmacies)',
+    'ward_order_table' => 'Table ward orders',
+    'ward_order_item_table' => 'Table products in orders (of wards)',
 ];

@@ -20,7 +20,7 @@
                 </tr>
             </thead>
             <tfoot>
-                <h4 class="well well-sm pull-right text-info">
+                <h4 class="well well-sm pull-right text-success">
                     <strong>@lang('messages.total'): </strong>{{ number_format($total, 2) }}
                 </h4>
             </tfoot>
@@ -37,7 +37,7 @@
                         <div class="input-group">
                             {!! Form::number('qty', $product->qty, ['class'=>'form-control', 'min' => '1']) !!}
                             <span class="input-group-btn">
-                                <button type="submit" title="{{ trans('messages.update') }}" class="btn btn-primary">
+                                <button type="submit" title="{{ trans('messages.update') }}" class="btn btn-success">
                                     <span class="glyphicon glyphicon-refresh"></span>
                                 </button>
                             </span>
@@ -63,8 +63,8 @@
     </div>
     <div class="panel-footer clearfix">
         <div class="pull-right {{ $products->count() == 0 ? 'hidden' : '' }}">             
-            <a href="{{ action('Customer\ShoppingCartController@getDestroyCart') }}" class="btn btn-lg btn-default">Clear Cart</a>
-            <button class="btn btn-lg btn-primary">Proceed to Checkout</button>
+            <a href="{{ action('Customer\ShoppingCartController@getDestroyCart') }}" class="btn btn-lg btn-default">@lang('messages.clear_cart')</a>
+            <a href="{{ action('Customer\ShoppingCartController@getCheckout') }}" class="btn btn-lg btn-success">@lang('messages.proceed_checkout')</a>
         </div>
     </div>
 </div>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use App\ProductCategory;
 
@@ -44,7 +43,7 @@ class ProductCategoryController extends Controller {
         $input = $request->all();
         ProductCategory::create($input);
 
-        Session::flash('flash_message', 'Product Category successfully added!');
+        Session::flash('flash_message', trans('messages.category_added'));
 
         return redirect()->back();
     }
@@ -88,7 +87,7 @@ class ProductCategoryController extends Controller {
         $input = $request->all();
         $productCategory->update($input);
 
-        Session::flash('flash_message', 'Product Category successfully updated!');
+        Session::flash('flash_message', trans('messages.category_updated'));
 
         return redirect()->back();
     }
@@ -104,7 +103,7 @@ class ProductCategoryController extends Controller {
 
         $productCategory->delete();
 
-        Session::flash('flash_message', 'Product Category successfully deleted!');
+        Session::flash('flash_message', trans('messages.category_deleted'));
 
         return redirect()->action('ProductCategoryController@index');
     }

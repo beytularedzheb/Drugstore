@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use App\Patient;
 
@@ -36,7 +35,7 @@ class PatientController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        
+
         $this->validate($request, [
             'name' => 'required|max:255',
             'disease' => 'required',
@@ -46,7 +45,7 @@ class PatientController extends Controller {
         $input = $request->all();
         Patient::create($input);
 
-        Session::flash('flash_message', 'Patient successfully added!');
+        Session::flash('flash_message', trans('messages.patient_successfully_added'));
 
         return redirect()->back();
     }
@@ -92,7 +91,7 @@ class PatientController extends Controller {
         $input = $request->all();
         $patient->update($input);
 
-        Session::flash('flash_message', 'Patient successfully updated!');
+        Session::flash('flash_message', trans('messages.patient_successfully_updated'));
 
         return redirect()->back();
     }
@@ -108,7 +107,7 @@ class PatientController extends Controller {
 
         $patient->delete();
 
-        Session::flash('flash_message', 'Patient successfully deleted!');
+        Session::flash('flash_message', trans('messages.patient_successfully_deleted'));
 
         return redirect()->action('PatientController@index');
     }

@@ -15,7 +15,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">@lang('messages.ward_order_table')</div>
                         <div class="panel-body">                            
-                            <table data-toggle="table" data-show-toggle="true" data-show-columns="true" data-search="true" data-pagination="true" data-sort-name="issue_date" data-sort-order="desc">
+                            <table data-toggle="table" data-show-toggle="true" data-show-columns="true" data-search="true" data-pagination="true" data-sort-name="created_at">
                                 <thead>
                                     <tr>
                                         <th data-field="id" data-sortable="true">@lang('messages.id')</th>
@@ -37,8 +37,15 @@
                                 </thead>
                                 <tbody>
                                     @foreach($wardOrders as $key => $wardOrder)
-
-                                    <tr>
+                                    <?php
+                                    $rowStyleClass = '';
+                                    if ($wardOrder->state == 'confirmed') {
+                                        $rowStyleClass = 'success';
+                                    } else if ($wardOrder->state == 'rejected') {
+                                        $rowStyleClass = 'danger';
+                                    }
+                                    ?>
+                                    <tr class="{{ $rowStyleClass }}">
                                         <td>{{ $wardOrder->id }}</td>
                                         <td>{{ $wardOrder->issue_date }}</td>
                                         <td>{{ $wardOrder->state }}</td>
@@ -46,7 +53,7 @@
                                         <td>{{ $wardOrder->sender_name }}</td>
                                         <td>{{ $wardOrder->requester->name or '' }}</td>
                                         <td>{{ $wardOrder->requestedFrom->name or '' }}</td>
-                                         <td>{{ $wardOrder->requestedFor->name or '' }}</td>
+                                        <td>{{ $wardOrder->requestedFor->name or '' }}</td>
                                         <td>{{ $wardOrder->created_at }}</td>
                                         <td>{{ $wardOrder->updated_at }}</td>
                                         <td class="text-center">

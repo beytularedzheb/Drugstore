@@ -11,102 +11,123 @@
   |
  */
 
+
 Route::group(['middlewareGroups' => 'web'], function () {
 
-    Route::auth();
-    Route::get('/', 'HomeController@index');
+    Route::group([
+        'prefix' => LaravelLocalization::setLocale()], function() {
 
-    Route::group(['middleware' => 'auth'], function () {
+        Route::auth();
 
-        Route::group(['prefix' => 'customer'], function () {
+        Route::get('/', 'HomeController@index');
 
-            Route::get('/', [
-                'uses' => 'CustomerController@index',
-                'as' => 'customer',
-            ]);
+        Route::group(['middleware' => 'auth'], function () {
 
-            Route::controller('product', 'Customer\ProductController');
-
-            Route::controller('cart', 'Customer\ShoppingCartController');
-        });
-
-
-        Route::group(['middleware' => 'role:admin'], function () {
-
-            Route::group(['prefix' => 'admin'], function () {
-                Route::resource('user', 'UserController', [
-                    'only' => ['index', 'show']
-                ]);
+            Route::group(['prefix' => 'customer'], function () {
 
                 Route::get('/', [
-                    'uses' => 'AdminController@index',
+                    'uses' => 'CustomerController@index',
+                    'as' => 'customer',
                 ]);
 
-                Route::resource('pharmacy', 'PharmacyController', ['names' => [
-                        'store' => 'pharmacy.store',
-                        'update' => 'pharmacy.update',
-                        'destroy' => 'pharmacy.destroy'
-                ]]);
+                Route::controller('product', 'Customer\ProductController');
 
-                Route::resource('ward', 'WardController', ['names' => [
-                        'store' => 'ward.store',
-                        'update' => 'ward.update',
-                        'destroy' => 'ward.destroy'
-                ]]);
+                Route::controller('cart', 'Customer\ShoppingCartController');
+            });
 
-                Route::resource('patient', 'PatientController', ['names' => [
-                        'store' => 'patient.store',
-                        'update' => 'patient.update',
-                        'destroy' => 'patient.destroy'
-                ]]);
+            Route::group(['middleware' => 'role:admin'], function () {
 
-                Route::resource('productCategory', 'ProductCategoryController', ['names' => [
-                        'store' => 'productCategory.store',
-                        'update' => 'productCategory.update',
-                        'destroy' => 'productCategory.destroy'
-                ]]);
+                Route::group(['prefix' => 'admin'], function () {
+                    Route::resource('user', 'UserController', [
+                        'only' => ['index', 'show']
+                    ]);
 
-                Route::resource('product', 'ProductController', ['names' => [
-                        'store' => 'product.store',
-                        'update' => 'product.update',
-                        'destroy' => 'product.destroy'
-                ]]);
+                    Route::get('/', [
+                        'uses' => 'AdminController@index',
+                    ]);
 
-                Route::resource('storehouse', 'StorehouseController', ['names' => [
-                        'store' => 'storehouse.store',
-                        'update' => 'storehouse.update',
-                        'destroy' => 'storehouse.destroy'
-                ]]);
+                    Route::get('new-orders', [
+                        'uses' => 'AdminController@newOrders',
+                    ]);
 
-                Route::resource('productProvider', 'ProductProviderController', ['names' => [
-                        'store' => 'productProvider.store',
-                        'update' => 'productProvider.update',
-                        'destroy' => 'productProvider.destroy'
-                ]]);
+                    Route::get('confirm-order/{id}', [
+                        'uses' => 'AdminController@confirmOrder',
+                    ]);
 
-                Route::resource('pharmacyOrder', 'PharmacyOrderController', ['names' => [
-                        'store' => 'pharmacyOrder.store',
-                        'update' => 'pharmacyOrder.update',
-                        'destroy' => 'pharmacyOrder.destroy'
-                ]]);
+                    Route::get('reject-order/{id}', [
+                        'uses' => 'AdminController@rejectOrder',
+                    ]);
 
-                Route::resource('pharmacyOrderLine', 'PharmacyOrderLineController', ['names' => [
-                        'store' => 'pharmacyOrderLine.store',
-                        'update' => 'pharmacyOrderLine.update',
-                        'destroy' => 'pharmacyOrderLine.destroy'
-                ]]);
+                    Route::get('update-sender/{id}', 'AdminController@updateSenderName');
 
-                Route::resource('wardOrder', 'WardOrderController', ['names' => [
-                        'store' => 'wardOrder.store',
-                        'update' => 'wardOrder.update',
-                        'destroy' => 'wardOrder.destroy'
-                ]]);
+                    Route::controller('report', 'ReportController');
 
-                Route::resource('wardOrderLine', 'WardOrderLineController', ['names' => [
-                        'store' => 'wardOrderLine.store',
-                        'update' => 'wardOrderLine.update',
-                        'destroy' => 'wardOrderLine.destroy'
-                ]]);
+                    Route::resource('pharmacy', 'PharmacyController', ['names' => [
+                            'store' => 'pharmacy.store',
+                            'update' => 'pharmacy.update',
+                            'destroy' => 'pharmacy.destroy'
+                    ]]);
+
+                    Route::resource('ward', 'WardController', ['names' => [
+                            'store' => 'ward.store',
+                            'update' => 'ward.update',
+                            'destroy' => 'ward.destroy'
+                    ]]);
+
+                    Route::resource('patient', 'PatientController', ['names' => [
+                            'store' => 'patient.store',
+                            'update' => 'patient.update',
+                            'destroy' => 'patient.destroy'
+                    ]]);
+
+                    Route::resource('productCategory', 'ProductCategoryController', ['names' => [
+                            'store' => 'productCategory.store',
+                            'update' => 'productCategory.update',
+                            'destroy' => 'productCategory.destroy'
+                    ]]);
+
+                    Route::resource('product', 'ProductController', ['names' => [
+                            'store' => 'product.store',
+                            'update' => 'product.update',
+                            'destroy' => 'product.destroy'
+                    ]]);
+
+                    Route::resource('storehouse', 'StorehouseController', ['names' => [
+                            'store' => 'storehouse.store',
+                            'update' => 'storehouse.update',
+                            'destroy' => 'storehouse.destroy'
+                    ]]);
+
+                    Route::resource('productProvider', 'ProductProviderController', ['names' => [
+                            'store' => 'productProvider.store',
+                            'update' => 'productProvider.update',
+                            'destroy' => 'productProvider.destroy'
+                    ]]);
+
+                    Route::resource('pharmacyOrder', 'PharmacyOrderController', ['names' => [
+                            'store' => 'pharmacyOrder.store',
+                            'update' => 'pharmacyOrder.update',
+                            'destroy' => 'pharmacyOrder.destroy'
+                    ]]);
+
+                    Route::resource('pharmacyOrderLine', 'PharmacyOrderLineController', ['names' => [
+                            'store' => 'pharmacyOrderLine.store',
+                            'update' => 'pharmacyOrderLine.update',
+                            'destroy' => 'pharmacyOrderLine.destroy'
+                    ]]);
+
+                    Route::resource('wardOrder', 'WardOrderController', ['names' => [
+                            'store' => 'wardOrder.store',
+                            'update' => 'wardOrder.update',
+                            'destroy' => 'wardOrder.destroy'
+                    ]]);
+
+                    Route::resource('wardOrderLine', 'WardOrderLineController', ['names' => [
+                            'store' => 'wardOrderLine.store',
+                            'update' => 'wardOrderLine.update',
+                            'destroy' => 'wardOrderLine.destroy'
+                    ]]);
+                });
             });
         });
     });

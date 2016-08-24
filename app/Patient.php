@@ -15,4 +15,8 @@ class Patient extends Model
     public function ward() {
         return $this->belongsTo('App\Ward', 'ward_id');
     }
+    
+    public function orders() {
+        return $this->hasMany('App\WardOrder', 'requested_for_id');
+    }
 }

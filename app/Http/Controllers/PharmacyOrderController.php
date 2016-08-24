@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use App\PharmacyOrder;
 
@@ -51,7 +50,7 @@ class PharmacyOrderController extends Controller {
         $pharmacyOrder->issue_date = \Carbon\Carbon::now();
         $pharmacyOrder->save();
         
-        Session::flash('flash_message', 'Pharmacy Order successfully added!');
+        Session::flash('flash_message', trans('messages.order_successfully_added'));
 
         return redirect()->back();
     }
@@ -64,8 +63,6 @@ class PharmacyOrderController extends Controller {
      */
     public function show($id) {
         $pharmacyOrder = PharmacyOrder::findOrFail($id);
-
-        Session::flash('flash_message', 'PharmacyOrder successfully loaded!');
         return view('admin.pharmacyOrder.show')->with('pharmacyOrder', $pharmacyOrder);
     }
 
@@ -100,7 +97,7 @@ class PharmacyOrderController extends Controller {
         $input = $request->all();
         $pharmacyOrder->update($input);
 
-        Session::flash('flash_message', 'Pharmacy Order successfully updated!');
+        Session::flash('flash_message', trans('messages.order_successfully_updated'));
 
         return redirect()->back();
     }
@@ -116,7 +113,7 @@ class PharmacyOrderController extends Controller {
 
         $pharmacyOrder->delete();
 
-        Session::flash('flash_message', 'Pharmacy Order successfully deleted!');
+        Session::flash('flash_message', trans('messages.order_successfully_deleted'));
 
         return redirect()->action('PharmacyOrderController@index');
     }

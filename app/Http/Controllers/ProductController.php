@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use App\Product;
 
@@ -49,7 +48,7 @@ class ProductController extends Controller {
         $input = $request->all();
         Product::create($input);
 
-        Session::flash('flash_message', 'Product successfully added!');
+        Session::flash('flash_message', trans('messages.product_added'));
 
         return redirect()->back();
     }
@@ -98,7 +97,7 @@ class ProductController extends Controller {
         $input = $request->all();
         $product->update($input);
 
-        Session::flash('flash_message', 'Product successfully updated!');
+        Session::flash('flash_message', trans('messages.product_updated'));
 
         return redirect()->back();
     }
@@ -114,7 +113,7 @@ class ProductController extends Controller {
 
         $product->delete();
 
-        Session::flash('flash_message', 'Product successfully deleted!');
+        Session::flash('flash_message', trans('messages.product_deleted'));
 
         return redirect()->action('ProductController@index');
     }

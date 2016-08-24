@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use App\PharmacyOrderLine;
 use App\Product;
 
-/* Consider about updating product availabla quantity */
 class PharmacyOrderLineController extends Controller {
 
     /**
@@ -56,7 +54,7 @@ class PharmacyOrderLineController extends Controller {
         $product->available_quantity -= $pharmacyOrderLine->quantity;
         $product->save();
         
-        Session::flash('flash_message', 'Pharmacy Order Line successfully added!');
+        Session::flash('flash_message', trans('messages.order_line_successfully_added'));
 
         return redirect()->back();
     }
@@ -69,8 +67,6 @@ class PharmacyOrderLineController extends Controller {
      */
     public function show($id) {
         $pharmacyOrderLine = PharmacyOrderLine::findOrFail($id);
-
-        Session::flash('flash_message', 'PharmacyOrderLine successfully loaded!');
         return view('admin.pharmacyOrderLine.show')->with('pharmacyOrderLine', $pharmacyOrderLine);
     }
 
@@ -114,7 +110,7 @@ class PharmacyOrderLineController extends Controller {
             $product->save();
         }
 
-        Session::flash('flash_message', 'Pharmacy Order Line successfully updated!');
+        Session::flash('flash_message', trans('messages.order_line_successfully_updated'));
 
         return redirect()->back();
     }
@@ -133,7 +129,7 @@ class PharmacyOrderLineController extends Controller {
         $pharmacyOrderLine->delete();
         $product->save();
         
-        Session::flash('flash_message', 'Pharmacy Order Line successfully deleted!');
+        Session::flash('flash_message', trans('messages.order_line_successfully_deleted'));
 
         return redirect()->action('PharmacyOrderLineController@index');
     }

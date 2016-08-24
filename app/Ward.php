@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ward extends Model
-{
+class Ward extends Model {
+
     protected $fillable = [
         'name',
         'uic',
@@ -13,8 +13,13 @@ class Ward extends Model
         'address',
         'phone'
     ];
-    
+
     public function patients() {
         return $this->hasMany('App\Patient', 'ward_id');
     }
+
+    public function orders() {
+        return $this->hasMany('App\WardOrder', 'requester_id');
+    }
+
 }

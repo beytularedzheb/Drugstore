@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use App\Storehouse;
 
@@ -46,7 +45,7 @@ class StorehouseController extends Controller {
         $input = $request->all();
         Storehouse::create($input);
 
-        Session::flash('flash_message', 'Storehouse successfully added!');
+        Session::flash('flash_message', trans('messages.storehouse_added'));
 
         return redirect()->back();
     }
@@ -92,7 +91,7 @@ class StorehouseController extends Controller {
         $input = $request->all();
         $storehouse->update($input);
 
-        Session::flash('flash_message', 'Storehouse successfully updated!');
+        Session::flash('flash_message', trans('messages.storehouse_updated'));
 
         return redirect()->back();
     }
@@ -108,7 +107,7 @@ class StorehouseController extends Controller {
 
         $storehouse->delete();
 
-        Session::flash('flash_message', 'Storehouse successfully deleted!');
+        Session::flash('flash_message', trans('messages.storehouse_deleted'));
 
         return redirect()->action('StorehouseController@index');
     }

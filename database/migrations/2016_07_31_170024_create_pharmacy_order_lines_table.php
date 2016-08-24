@@ -21,8 +21,8 @@ class CreatePharmacyOrderLinesTable extends Migration {
 
             $table->timestamps();
 
-            $table->foreign('pharmacy_order_id')->references('id')->on('pharmacy_orders')->onDelete('set null');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('set null');
+            $table->foreign('pharmacy_order_id')->references('id')->on('pharmacy_orders')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

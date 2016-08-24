@@ -18,9 +18,11 @@ class CheckRole {
     public function handle($request, Closure $next, $role) {
         if (!$request->user()->hasRole($role)) {
             Session::flash('flash_message', trans('messages.no_user_permission'));
-            return redirect('/');
+            Session::flash('flash_msg_type', 'danger');
+
+            return redirect()->back();
         }
-        
+
         return $next($request);
     }
 

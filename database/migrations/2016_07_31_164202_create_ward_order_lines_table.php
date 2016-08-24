@@ -21,8 +21,8 @@ class CreateWardOrderLinesTable extends Migration {
 
             $table->timestamps();
 
-            $table->foreign('ward_order_id')->references('id')->on('ward_orders')->onDelete('set null');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('set null');
+            $table->foreign('ward_order_id')->references('id')->on('ward_orders')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

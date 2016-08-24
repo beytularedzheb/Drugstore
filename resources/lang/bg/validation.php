@@ -1,113 +1,141 @@
+
 <?php
 
 return [
-
     /*
-    |--------------------------------------------------------------------------
-    | Validation Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines contain the default error messages used by
-    | the validator class. Some of these rules have multiple versions such
-    | as the size rules. Feel free to tweak each of these messages here.
-    |
-    */
-
-    'accepted'             => ':attribute трябва да бъде приет.',
-    'active_url'           => ':attribute е невалиден URL адрес.',
-    'after'                => ':attribute трябва да е дата след :date.',
-    'alpha'                => ':attribute може да съдържа само букви.',
-    'alpha_dash'           => ':attribute може да съдържа само букви, числа и тире.',
-    'alpha_num'            => ':attribute може да съдържа само букви и числа.',
-    'array'                => ':attribute трябва да е масив',
-    'before'               => ':attribute трябва да е дата преди :date.',
-    'between'              => [
-        'numeric' => ':attribute трябва да е между :min и :max.',
-        'file'    => ':attribute трябва да е между :min и :max килобайта.',
-        'string'  => ':attribute трябва да е между :min и :max символа.',
-        'array'   => ':attribute трябва да съдържа между :min и :max елемента.',
+      |--------------------------------------------------------------------------
+      | Validation Language Lines
+      |--------------------------------------------------------------------------
+      |
+      | The following language lines contain the default error messages used by
+      | the validator class. Some of these rules have multiple versions such
+      | such as the size rules. Feel free to tweak each of these messages.
+      |
+     */
+    'accepted' => 'Трябва да приемете :attribute.',
+    'active_url' => 'Полето :attribute не е валиден URL адрес.',
+    'after' => 'Полето :attribute трябва да бъде дата след :date.',
+    'alpha' => 'Полето :attribute трябва да съдържа само букви.',
+    'alpha_dash' => 'Полето :attribute трябва да съдържа само букви, цифри, долна черта и тире.',
+    'alpha_num' => 'Полето :attribute трябва да съдържа само букви и цифри.',
+    'array' => 'Полето :attribute трябва да бъде масив.',
+    'before' => 'Полето :attribute трябва да бъде дата преди :date.',
+    'between' => [
+        'numeric' => 'Полето :attribute трябва да бъде между :min и :max.',
+        'file' => 'Полето :attribute трябва да бъде между :min и :max килобайта.',
+        'string' => 'Полето :attribute трябва да бъде между :min и :max знака.',
+        'array' => 'Полето :attribute трябва да има между :min - :max елемента.',
     ],
-    'boolean'              => ':attribute полето трябва да е true или false.',
-    'confirmed'            => ':attribute потвърждението не съвпада.',
-    'date'                 => ':attribute е невалидна дата.',
-    'date_format'          => ':attribute не отговаря на формата :format.',
-    'different'            => ':attribute и :other трябва да са различни.',
-    'digits'               => ':attribute трябва да са :digits цифри.',
-    'digits_between'       => ':attribute трябва да е между :min и :max.',
-    'distinct'             => ':attribute се повтаря.',
-    'email'                => ':attribute трябва да е валиден email адрес.',
-    'exists'               => 'избраният :attribute е невалиден.',
-    'filled'               => ':attribute полето е задължително.',
-    'image'                => ':attribute трябва да е изображение.',
-    'in'                   => 'избраният :attribute е невалиден.',
-    'in_array'             => ':attribute не е намерен в :other.',
-    'integer'              => ':attribute трябва да е цяло число.',
-    'ip'                   => ':attribute трябва да е валиден IP адрес.',
-    'json'                 => ':attribute трябва да е валиден JSON стринг.',
-    'max'                  => [
-        'numeric' => ':attribute не може да е по-голям от :max.',
-        'file'    => ':attribute не може да е по-голям от :max килобайта.',
-        'string'  => ':attribute не може да е по-голям от :max символа.',
-        'array'   => ':attribute не може да има повече от :max елемента.',
+    'boolean' => 'Полето :attribute трябва да съдържа Да или Не',
+    'confirmed' => 'Полето :attribute не е потвърдено.',
+    'date' => 'Полето :attribute не е валидна дата.',
+    'date_format' => 'Полето :attribute не е във формат :format.',
+    'different' => 'Полетата :attribute и :other трябва да са различни.',
+    'digits' => 'Полето :attribute трябва да има :digits цифри.',
+    'digits_between' => 'Полето :attribute трябва да има между :min и :max цифри.',
+    'dimensions' => 'The :attribute has invalid image dimensions.',
+    'distinct' => 'The :attribute field has a duplicate value.',
+    'email' => 'Полето :attribute е в невалиден формат.',
+    'exists' => 'Избранато поле :attribute вече съществува.',
+    'file' => 'The :attribute must be a file.',
+    'filled' => 'Полето :attribute е задължително.',
+    'image' => 'Полето :attribute трябва да бъде изображение.',
+    'in' => 'Избраното поле :attribute е невалидно.',
+    'in_array' => 'The :attribute field does not exist in :other.',
+    'integer' => 'Полето :attribute трябва да бъде цяло число.',
+    'ip' => 'Полето :attribute трябва да бъде IP адрес.',
+    'json' => 'Полето :attribute трябва да бъде JSON низ.',
+    'max' => [
+        'numeric' => 'Полето :attribute трябва да бъде по-малко от :max.',
+        'file' => 'Полето :attribute трябва да бъде по-малко от :max килобайта.',
+        'string' => 'Полето :attribute трябва да бъде по-малко от :max знака.',
+        'array' => 'Полето :attribute трябва да има по-малко от :max елемента.',
     ],
-    'mimes'                => ':attribute трябва да е файл от тип: :values.',
-    'min'                  => [
-        'numeric' => ':attribute трябва да е поне :min.',
-        'file'    => ':attribute трябва да е поне :min килобайта.',
-        'string'  => ':attribute трябва да е поне :min символа.',
-        'array'   => ':attribute трябва да има поне :min елемента.',
+    'mimes' => 'Полето :attribute трябва да бъде файл от тип: :values.',
+    'min' => [
+        'numeric' => 'Полето :attribute трябва да бъде минимум :min.',
+        'file' => 'Полето :attribute трябва да бъде минимум :min килобайта.',
+        'string' => 'Полето :attribute трябва да бъде минимум :min знака.',
+        'array' => 'Полето :attribute трябва има минимум :min елемента.',
     ],
-    'not_in'               => 'Избраният елемент :attribute е невалиден.',
-    'numeric'              => ':attribute трябва да е число.',
-    'present'              => ':attribute полето трябва да съществува.',
-    'regex'                => ':attribute форматът е невалиден.',
-    'required'             => 'Полето :attribute е задължително.',
-    'required_if'          => 'Полето :attribute е задължително, когато :other е :value.',
-    'required_unless'      => 'Полето :attribute е задължително докато :other е в :values.',
-    'required_with'        => 'Полето :attribute е задължително, когато :values присъства.',
-    'required_with_all'    => 'Полето :attribute е задължително, когато :values присъства.',
-    'required_without'     => 'Полето :attribute е задължително, когато :values не присъства.',
-    'required_without_all' => 'Полето :attribute е задължително, когато нито един от :values не присъства.',
-    'same'                 => ':attribute и :other трябва да са еднакви.',
-    'size'                 => [
-        'numeric' => ':attribute трябва да е :size.',
-        'file'    => ':attribute трябва да е :size килобайта.',
-        'string'  => ':attribute трябва да е :size символа.',
-        'array'   => ':attribute трябва да съдържа :size елемента.',
+    'not_in' => 'Избраното поле :attribute е невалидно.',
+    'numeric' => 'Полето :attribute трябва да бъде число.',
+    'present' => 'The :attribute field must be present.',
+    'regex' => 'Полето :attribute е в невалиден формат.',
+    'required' => 'Полето :attribute е задължително.',
+    'required_if' => 'Полето :attribute се изисква, когато :other е :value.',
+    'required_unless' => 'The :attribute field is required unless :other is in :values.',
+    'required_with' => 'Полето :attribute се изисква, когато :values има стойност.',
+    'required_with_all' => 'Полето :attribute е задължително, когато :values имат стойност.',
+    'required_without' => 'Полето :attribute се изисква, когато :values няма стойност.',
+    'required_without_all' => 'Полето :attribute се изисква, когато никое от полетата :values няма стойност.',
+    'same' => 'Полетата :attribute и :other трябва да съвпадат.',
+    'size' => [
+        'numeric' => 'Полето :attribute трябва да бъде :size.',
+        'file' => 'Полето :attribute трябва да бъде :size килобайта.',
+        'string' => 'Полето :attribute трябва да бъде :size знака.',
+        'array' => 'Полето :attribute трябва да има :size елемента.',
     ],
-    'string'               => ':attribute трябва да е символен низ.',
-    'timezone'             => ':attribute трябва да е валидна времева зона.',
-    'unique'               => 'Стойността на полето \':attribute\' е вече заета.',
-    'url'                  => 'URL форматът :attribute е невалиден.',
-
+    'string' => 'Полето :attribute трябва да бъде знаков низ.',
+    'timezone' => 'Полето :attribute трябва да съдържа валидна часова зона.',
+    'unique' => 'Полето :attribute вече съществува.',
+    'url' => 'Полето :attribute е в невалиден формат.',
     /*
-    |--------------------------------------------------------------------------
-    | Custom Validation Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | Here you may specify custom validation messages for attributes using the
-    | convention "attribute.rule" to name the lines. This makes it quick to
-    | specify a specific custom language line for a given attribute rule.
-    |
-    */
-
+      |--------------------------------------------------------------------------
+      | Custom Validation Language Lines
+      |--------------------------------------------------------------------------
+      |
+      | Here you may specify custom validation messages for attributes using the
+      | convention "attribute.rule" to name the lines. This makes it quick to
+      | specify a specific custom language line for a given attribute rule.
+      |
+     */
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
     ],
-
     /*
-    |--------------------------------------------------------------------------
-    | Custom Validation Attributes
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used to swap attribute place-holders
-    | with something more reader friendly such as E-Mail Address instead
-    | of "email". This simply helps us make messages a little cleaner.
-    |
-    */
-
-    'attributes' => [],
-
+      |--------------------------------------------------------------------------
+      | Custom Validation Attributes
+      |--------------------------------------------------------------------------
+      |
+      | The following language lines are used to swap attribute place-holders
+      | with something more reader friendly such as E-Mail Address instead
+      | of "email". This simply helps us make messages a little cleaner.
+      |
+     */
+    'attributes' => [
+        'name' => 'име',
+        'username' => 'потребител',
+        'email' => 'ел. поща',
+        'first_name' => 'име',
+        'last_name' => 'фамилия',
+        'password' => 'парола',
+        'city' => 'град',
+        'country' => 'държава',
+        'address' => 'адрес',
+        'phone' => 'телефон',
+        'mobile' => 'GSM',
+        'age' => 'възраст',
+        'sex' => 'пол',
+        'gender' => 'пол',
+        'day' => 'ден',
+        'month' => 'месец',
+        'year' => 'година',
+        'hour' => 'час',
+        'minute' => 'минута',
+        'second' => 'секунда',
+        'title' => 'заглавие',
+        'content' => 'съдържание',
+        'description' => 'описание',
+        'excerpt' => 'откъс',
+        'date' => 'дата',
+        'time' => 'време',
+        'available' => 'достъпен',
+        'size' => 'размер',
+        'recaptcha_response_field' => 'рекапча',
+        'subject' => 'заглавие',
+        'message' => 'съобщение',
+    ],
 ];

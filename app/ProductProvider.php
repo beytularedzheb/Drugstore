@@ -13,4 +13,8 @@ class ProductProvider extends Model {
         'address',
         'phone'
     ];
+    
+    public function orders() {
+        return $this->hasMany('App\PharmacyOrder', 'issuer_id');
+    }
 }

@@ -8,7 +8,7 @@
         <title>@yield('title')</title>
 
         <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-        
+
         <!--[if lt IE 9]>
         <script src="{{ URL::asset('assets/js/html5shiv.js') }}"></script>
         <script src="{{ URL::asset('assets/js/respond.min.js') }}"></script>
@@ -26,7 +26,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">@lang('messages.app_name')</a>
+                    
+                    <a href="{{ action('CustomerController@index') }}" class="navbar-brand"><span class="text-success text-uppercase">{{ trans('messages.app_name') }}</span></a> 
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -34,11 +35,20 @@
                     </ul>
                     <ul class="user-menu nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"</span> {{ Auth::user()->name }} <span class="caret"></span></a>
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">@lang('messages.language') <span class="glyphicon glyphicon-flag"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                <li>
+                                    <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+                                        {{ $properties['native'] }}
+                                    </a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"</span> {{ Auth::user()->name }}<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"><span class="glyphicon glyphicon-user"</span> @lang('messages.profile')</a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-cog"</span> @lang('messages.settings')</a></li>
-                                <li role="separator" class="divider"></li>
                                 <li><a href="{{ url('/logout') }}"><span class="glyphicon glyphicon-log-out"</span> @lang('messages.logout')</a></li>
                             </ul>
                         </li>
@@ -55,8 +65,9 @@
         <!-- Modal -->
         <div id="dlg-shopping" class="modal fade" role="dialog">
             <div class="modal-dialog">
-                <div class="alert alert-success" role="alert">
-                    <h4>{{ Session::get('added_product_message') }}</h4>
+                <div class="alert alert-{{ Session::has('flash_msg_type') ? Session::get('flash_msg_type') : 'success' }}" role="alert">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4>{{ Session::get('flash_message') }}</h4>
                 </div>
             </div>
         </div>
@@ -65,14 +76,18 @@
         <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
         <script src="{{ URL::asset('assets/js/bootstrap-spinner.min.js') }}"></script>
 
-        @if(Session::has('added_product_message'))
+        @if(Session::has('flash_message'))
 
         <script>
 $(window).load(function () {
     $('#dlg-shopping').modal('show');
-    setTimeout(function () {
-        $('#dlg-shopping').modal('hide');
-    }, 1500);
+
+    @if (!Session::has('flash_msg_type'))
+            setTimeout(function () {
+                $('#dlg-shopping').modal('hide');
+            }, 1500);
+            @endif
+
 });
         </script>
 

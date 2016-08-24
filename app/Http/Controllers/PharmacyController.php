@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use App\Pharmacy;
 
@@ -47,7 +46,7 @@ class PharmacyController extends Controller {
         $input = $request->all();
         Pharmacy::create($input);
 
-        Session::flash('flash_message', 'Pharmacy successfully added!');
+        Session::flash('flash_message', trans('messages.pharmacy_successfully_added'));
 
         return redirect()->back();
     }
@@ -61,7 +60,6 @@ class PharmacyController extends Controller {
     public function show($id) {
         $pharmacy = Pharmacy::findOrFail($id);
 
-        Session::flash('flash_message', 'Pharmacy successfully loaded!');
         return view('admin.pharmacy.show')->with('pharmacy', $pharmacy);
     }
 
@@ -96,7 +94,7 @@ class PharmacyController extends Controller {
         $input = $request->all();
         $pharmacy->update($input);
 
-        Session::flash('flash_message', 'Pharmacy successfully updated!');
+        Session::flash('flash_message', trans('messages.pharmacy_successfully_updated'));
 
         return redirect()->back();
     }
@@ -112,7 +110,7 @@ class PharmacyController extends Controller {
 
         $pharmacy->delete();
 
-        Session::flash('flash_message', 'Pharmacy successfully deleted!');
+        Session::flash('flash_message', trans('messages.pharmacy_successfully_deleted'));
 
         return redirect()->action('PharmacyController@index');
     }

@@ -15,7 +15,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">@lang('messages.pharmacy_order_table')</div>
                         <div class="panel-body">                            
-                            <table data-toggle="table" data-show-toggle="true" data-show-columns="true" data-search="true" data-pagination="true" data-sort-name="issue_date" data-sort-order="desc">
+                            <table data-toggle="table" data-show-toggle="true" data-show-columns="true" data-search="true" data-pagination="true" data-sort-name="created_at">
                                 <thead>
                                     <tr>
                                         <th data-field="id" data-sortable="true">@lang('messages.id')</th>

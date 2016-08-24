@@ -14,7 +14,7 @@ class CreateWardOrdersTable extends Migration {
         Schema::create('ward_orders', function (Blueprint $table) {
             $table->increments('id');
             $table->date('issue_date');
-            $table->enum('state', ['confirmed', 'rejected', 'sent'])->default(null);
+            $table->enum('state', ['confirmed', 'rejected'])->nullable()->default(null);
             $table->string('receiver_name')->nullable();
             $table->string('sender_name');
             $table->unsignedInteger('requester_id')->nullable();

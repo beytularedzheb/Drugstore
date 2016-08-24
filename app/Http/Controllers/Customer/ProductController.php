@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Customer;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use Illuminate\Support\Facades\Session;
 use App\Product;
 use App\ProductCategory;
 use App\Http\Controllers\Controller;
@@ -17,7 +15,8 @@ class ProductController extends Controller {
 
         return view('customer.product.index')
                         ->with('products', $products)
-                        ->with('productCategories', $productCategories);
+                        ->with('productCategories', $productCategories)
+                        ->with('selected_categories', null);
     }
 
     public function getShow($id) {

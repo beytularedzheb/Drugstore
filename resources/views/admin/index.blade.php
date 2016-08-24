@@ -10,31 +10,20 @@
 </div><!--/.row-->
 
 <div class="row">
-    <div class="col-xs-12 col-md-6 col-lg-4">
-        <div class="panel panel-blue panel-widget">
-            <div class="row no-padding">
-                <div class="col-sm-2 col-lg-4 widget-left">
-                    <svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg>
-                </div>
-                <div class="col-sm-10 col-lg-8 widget-right">
-                    <div class="large">120</div>
-                    <div class="text-muted">New Orders</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-4">
-        <div class="panel panel-teal panel-widget">
-            <div class="row no-padding">
-                <div class="col-sm-2 col-lg-4 widget-left">
-                    <svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
-                </div>
-                <div class="col-sm-10 col-lg-8 widget-right">
-                    <div class="large">24</div>
-                    <div class="text-muted">New Users</div>
+    <a href="{{ action('AdminController@newOrders') }}">
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="panel panel-blue panel-widget">
+                <div class="row no-padding">
+                    <div class="col-sm-2 col-lg-4 widget-left">
+                        <svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg>
+                    </div>
+                    <div class="col-sm-10 col-lg-8 widget-right">
+                        <div class="large">{{ $new_orders_count or '0' }}</div>
+                        <div class="text-muted">@lang('messages.new_orders')</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </a>
 </div><!--/.row-->
 @endsection

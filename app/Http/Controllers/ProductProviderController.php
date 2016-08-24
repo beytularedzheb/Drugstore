@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use App\ProductProvider;
 
@@ -47,7 +46,7 @@ class ProductProviderController extends Controller {
         $input = $request->all();
         ProductProvider::create($input);
 
-        Session::flash('flash_message', 'Product Provider successfully added!');
+        Session::flash('flash_message', trans('messages.provider_added'));
 
         return redirect()->back();
     }
@@ -60,8 +59,6 @@ class ProductProviderController extends Controller {
      */
     public function show($id) {
         $productProvider = ProductProvider::findOrFail($id);
-
-        Session::flash('flash_message', 'Product Provider successfully loaded!');
         return view('admin.productProvider.show')->with('productProvider', $productProvider);
     }
 
@@ -96,7 +93,7 @@ class ProductProviderController extends Controller {
         $input = $request->all();
         $productProvider->update($input);
 
-        Session::flash('flash_message', 'Product Provider successfully updated!');
+        Session::flash('flash_message', trans('messages.provider_updated'));
 
         return redirect()->back();
     }
@@ -112,7 +109,7 @@ class ProductProviderController extends Controller {
 
         $productProvider->delete();
 
-        Session::flash('flash_message', 'Product Provider successfully deleted!');
+        Session::flash('flash_message', trans('messages.provider_deleted'));
 
         return redirect()->action('ProductProviderController@index');
     }

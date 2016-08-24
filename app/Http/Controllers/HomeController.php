@@ -22,7 +22,13 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return view('home');
+        $user = \Illuminate\Support\Facades\Auth::user();
+        if ($user->hasRole('admin')) {
+            return redirect('/admin');
+        } else if ($user->hasRole('customer')) {
+            return redirect('/customer');
+        }
+        return redirect('/');
     }
 
 }

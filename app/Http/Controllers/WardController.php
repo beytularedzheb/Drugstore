@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use App\Ward;
 
@@ -46,7 +45,7 @@ class WardController extends Controller {
         $input = $request->all();
         Ward::create($input);
 
-        Session::flash('flash_message', 'Ward successfully added!');
+        Session::flash('flash_message', trans('messages.ward_added'));
 
         return redirect()->back();
     }
@@ -92,7 +91,7 @@ class WardController extends Controller {
         $input = $request->all();
         $ward->update($input);
 
-        Session::flash('flash_message', 'Ward successfully updated!');
+        Session::flash('flash_message', trans('messages.ward_updated'));
 
         return redirect()->back();
     }
@@ -108,7 +107,7 @@ class WardController extends Controller {
 
         $ward->delete();
 
-        Session::flash('flash_message', 'Ward successfully deleted!');
+        Session::flash('flash_message', trans('messages.ward_deleted'));
 
         return redirect()->action('WardController@index');
     }

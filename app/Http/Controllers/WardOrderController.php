@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use App\WardOrder;
 
@@ -51,9 +50,10 @@ class WardOrderController extends Controller {
         
         $wardOrder = WardOrder::find($id);
         $wardOrder->issue_date = \Carbon\Carbon::now();
+        $wardOrder->state = null;
         $wardOrder->save();
         
-        Session::flash('flash_message', 'Ward Order successfully added!');
+        Session::flash('flash_message', trans('messages.order_successfully_added'));
 
         return redirect()->back();
     }
@@ -66,8 +66,6 @@ class WardOrderController extends Controller {
      */
     public function show($id) {
         $wardOrder = WardOrder::findOrFail($id);
-
-        Session::flash('flash_message', 'WardOrder successfully loaded!');
         return view('admin.wardOrder.show')->with('wardOrder', $wardOrder);
     }
 
@@ -104,7 +102,7 @@ class WardOrderController extends Controller {
         $input = $request->all();
         $wardOrder->update($input);
 
-        Session::flash('flash_message', 'Ward Order successfully updated!');
+        Session::flash('flash_message', trans('messages.order_successfully_updated'));
 
         return redirect()->back();
     }
@@ -120,7 +118,7 @@ class WardOrderController extends Controller {
 
         $wardOrder->delete();
 
-        Session::flash('flash_message', 'Ward Order successfully deleted!');
+        Session::flash('flash_message', trans('messages.order_successfully_deleted'));
 
         return redirect()->action('WardOrderController@index');
     }

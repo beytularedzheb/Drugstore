@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use App\WardOrderLine;
 use App\Product;
@@ -38,9 +37,9 @@ class WardOrderLineController extends Controller {
      */
     public function store(Request $request) {
         $product = Product::findOrFail($request->input('product_id'));
-        
+
         $max_quantity = $product->available_quantity;
-        
+
         $this->validate($request, [
             'ward_order_id' => 'required|exists:ward_orders,id',
             'product_id' => 'required|exists:products,id',
@@ -51,11 +50,11 @@ class WardOrderLineController extends Controller {
         $wardOrderLine = WardOrderLine::create($input);
         $wardOrderLine->unit_price_in_leva = $product->unit_price_in_leva;
         $wardOrderLine->save();
-        
+
         $product->available_quantity -= $wardOrderLine->quantity;
         $product->save();
-        
-        Session::flash('flash_message', 'Ward Order Line successfully added!');
+
+        Session::flash('flash_message', trans('messages.order_line_successfully_added'));
 
         return redirect()->back();
     }
@@ -68,8 +67,6 @@ class WardOrderLineController extends Controller {
      */
     public function show($id) {
         $wardOrderLine = WardOrderLine::findOrFail($id);
-
-        Session::flash('flash_message', 'WardOrderLine successfully loaded!');
         return view('admin.wardOrderLine.show')->with('wardOrderLine', $wardOrderLine);
     }
 
@@ -92,13 +89,13 @@ class WardOrderLineController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        
+
         $wardOrderLine = WardOrderLine::findOrFail($id);
         $old_quantity = $wardOrderLine->quantity;
-        
+
         $product = Product::findOrFail($request->input('product_id'));
         $max_quantity = $product->available_quantity + $old_quantity;
-        
+
         $this->validate($request, [
             'ward_order_id' => 'required|exists:ward_orders,id',
             'product_id' => 'required|exists:products,id',
@@ -107,13 +104,13 @@ class WardOrderLineController extends Controller {
 
         $input = $request->all();
         $wardOrderLine->update($input);
-        
+
         if ($old_quantity !== $wardOrderLine->quantity) {
             $product->available_quantity += ($old_quantity - $wardOrderLine->quantity);
             $product->save();
         }
 
-        Session::flash('flash_message', 'Ward Order Line successfully updated!');
+        Session::flash('flash_message', trans('messages.order_line_successfully_updated'));
 
         return redirect()->back();
     }
@@ -128,11 +125,11 @@ class WardOrderLineController extends Controller {
         $wardOrderLine = WardOrderLine::findOrFail($id);
         $product = Product::findOrFail($wardOrderLine->product_id);
         $product->available_quantity += $wardOrderLine->quantity;
-        
+
         $wardOrderLine->delete();
         $product->save();
-        
-        Session::flash('flash_message', 'Ward Order Line successfully deleted!');
+
+        Session::flash('flash_message', trans('messages.order_line_successfully_deleted'));
 
         return redirect()->action('WardOrderLineController@index');
     }

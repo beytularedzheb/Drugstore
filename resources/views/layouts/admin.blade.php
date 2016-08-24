@@ -22,6 +22,7 @@
     </head>
 
     <body>
+
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -41,6 +42,18 @@
                                 <li><a href="{{ url('/logout') }}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> @lang('messages.logout')</a></li>
                             </ul>
                         </li>
+                        <li class="dropdown pull-right" style="margin-right: 1em;">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">@lang('messages.language') <span class="glyphicon glyphicon-flag"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                <li>
+                                    <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+                                        {{ $properties['native'] }}
+                                    </a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </li>
                     </ul>
                 </div>
 
@@ -51,6 +64,7 @@
             @section('menu')
             <ul class="nav menu">
                 <li><a href="{{ action('AdminController@index') }}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> @lang('messages.dashboard')</a></li>
+                <li><a href="{{ action('ReportController@getIndex') }}"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> {{ trans_choice('messages.reports', 2) }}</a></li>
                 <li class="parent ">
                     <a href="">
                         <span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> @lang('messages.tables')</span>  

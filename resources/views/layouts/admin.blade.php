@@ -22,7 +22,8 @@
     </head>
 
     <body>
-
+        <?php $new_orders_count = App\WardOrder::where('state', null)->count(); ?>
+        
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -63,9 +64,9 @@
         <div id="sidebar-collapse" class="col-sm-3 col-md-3 col-lg-2 sidebar">
             @section('menu')
             <ul class="nav menu">
-                <li><a href="{{ action('AdminController@index') }}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> @lang('messages.dashboard')</a></li>
+                <li><a href="{{ action('AdminController@newOrders') }}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> @lang('messages.new_orders') <span class="badge">{{ $new_orders_count or '0' }}</span></a></li>
                 <li><a href="{{ action('ReportController@getIndex') }}"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> {{ trans_choice('messages.reports', 2) }}</a></li>
-                <li class="parent ">
+                <li class="parent">
                     <a href="">
                         <span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> @lang('messages.tables')</span>  
                     </a>

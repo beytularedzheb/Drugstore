@@ -10,8 +10,7 @@ use App\WardOrder;
 class AdminController extends Controller {
 
     public function index() {
-        $new_orders_count = WardOrder::where('state', null)->count();
-        return view('admin.index')->with('new_orders_count', $new_orders_count);
+        return view('admin.index');
     }
 
     public function newOrders() {

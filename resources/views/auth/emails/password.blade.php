@@ -1,1 +1,1 @@
-Click here to reset your password: <a href="{{ $link = url(LaravelLocalization::getCurrentLocale() . 'password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}"> {{ $link }} </a>
+Click here to reset your password: <a href="{{ $link = url(LaravelLocalization::getCurrentLocale() . '/password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}"> {{ $link }} </a>

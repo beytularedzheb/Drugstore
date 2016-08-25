@@ -39,7 +39,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 
                 Route::group(['prefix' => 'admin'], function () {
                     Route::resource('user', 'UserController', [
-                        'only' => ['index', 'show']
+                        'only' => ['index', 'show', 'destroy']
                     ]);
 
                     Route::get('/', [

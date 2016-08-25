@@ -9,6 +9,8 @@
                     <h1 class="page-header">{{ trans_choice('messages.product_categories', 2) }}</h1>
                 </div>
             </div><!--/.row-->
+            
+            @include('partials.alerts.success')
 
             <div class="row">
                 <div class="col-lg-12">

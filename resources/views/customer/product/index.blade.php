@@ -6,12 +6,12 @@
 
 <div class="well well-sm">
     {!! Form::open(['method' => 'POST']) !!}
-    
+
     <button type="submit" class="btn btn-success" style="margin-right: 1em;">
         {{ trans('messages.filter') }}
         <span class="glyphicon glyphicon-filter"></span>
     </button>
-    
+
     @foreach($productCategories as $category)
     <label class="checkbox-inline text-success text-capitalize">
         {!! Form::checkbox('selected_category[]', 
@@ -40,9 +40,19 @@
                 <p class="text-success"><strong>@lang('messages.price'):</strong> {{ number_format($product->unit_price_in_leva, 2) }}</p>
                 <p class="text-success"><strong>@lang('messages.description'):</strong> {{ $product->description }}</p>
                 <p>
-                    <button class="btn btn-success btn-block text-uppercase {{ $product->available_quantity <= 0 ? 'disabled' : '' }}">
+                    @if ($product->available_quantity <= 0)
+                    <button 
+                        type="button"
+                        class="btn btn-success btn-block text-uppercase disabled">
                         @lang('messages.add_to_cart') <span class="glyphicon glyphicon-shopping-cart"</span>
                     </button>
+                    @else
+                    <button 
+                        type="submit"
+                        class="btn btn-success btn-block text-uppercase">
+                        @lang('messages.add_to_cart') <span class="glyphicon glyphicon-shopping-cart"</span>
+                    </button>
+                    @endif
                 </p>
             </div>
         </div>

@@ -114,6 +114,8 @@ return [
     'orders_by_patient' => 'Orders by patient',
     'products_by_storehouse' => 'Available products by storehouse',
     'patients_by_ward' => 'Patients by ward',
+    'contacts' => 'Contacts',
+    'about' => 'About',
     
     'register' => 'Register',
     'forgot_password' => 'Forgot your password?',

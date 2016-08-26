@@ -14,6 +14,30 @@
         <script src="{{ URL::asset('assets/js/respond.min.js') }}"></script>
         <![endif]-->
 
+        <style>
+            .iframe-container{
+                position: relative;
+                width: 100%;
+                padding-bottom: 56.25%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
+            }
+            .iframe-container > *{
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                width: 100%;
+            }
+
+            .iframe-container{
+                margin-bottom: 50px;
+                background: #eee;
+            }
+        </style>
     </head>
 
     <body>
@@ -26,12 +50,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    
+
                     <a href="{{ action('CustomerController@index') }}" class="navbar-brand"><span class="text-success text-uppercase">{{ trans('messages.app_name') }}</span></a> 
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
                         <li><a href="{{ action('Customer\ProductController@getIndex') }}">{{ trans_choice('messages.products', 2) }}</a></li>
+                        <li><a href="{{ url('customer\pharmacy-contacts') }}">{{ trans('messages.contacts') }}</a></li>
+                        <li><a href="{{ url('customer\pharmacy-about') }}">{{ trans('messages.about') }}</a></li>
                     </ul>
                     <ul class="user-menu nav navbar-nav navbar-right">
                         <li class="dropdown">

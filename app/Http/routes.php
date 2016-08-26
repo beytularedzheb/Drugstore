@@ -30,6 +30,14 @@ Route::group(['middlewareGroups' => 'web'], function () {
                     'as' => 'customer',
                 ]);
 
+                Route::get('/pharmacy-contacts', function () {
+                    return view('customer.contacts')->with('pharmacy', App\Pharmacy::first());
+                });
+
+                Route::get('/pharmacy-about', function () {
+                    return view('customer.about');
+                });
+
                 Route::controller('product', 'Customer\ProductController');
 
                 Route::controller('cart', 'Customer\ShoppingCartController');

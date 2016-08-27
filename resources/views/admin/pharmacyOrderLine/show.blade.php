@@ -24,7 +24,7 @@
                                         <th>{{ trans_choice('messages.pharmacy_orders', 1) }}</th>
                                         <td>
                                         @if (isset($pharmacyOrderLine->pharmacy_order_id))
-                                            <a class="btn btn-link" href="{{ action('PharmacyOrderLineController@show', $pharmacyOrderLine->pharmacy_order_id) }}">{{ $pharmacyOrderLine->pharmacy_order_id }}</a>
+                                            <a class="btn btn-link" href="{{ action('PharmacyOrderController@show', $pharmacyOrderLine->pharmacy_order_id) }}">{{ $pharmacyOrderLine->pharmacy_order_id }}</a>
                                         @endif
                                         </td>
                                     </tr>

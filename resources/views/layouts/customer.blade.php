@@ -56,8 +56,8 @@
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
                         <li><a href="{{ action('Customer\ProductController@getIndex') }}">{{ trans_choice('messages.products', 2) }}</a></li>
-                        <li><a href="{{ url('customer\pharmacy-contacts') }}">{{ trans('messages.contacts') }}</a></li>
-                        <li><a href="{{ url('customer\pharmacy-about') }}">{{ trans('messages.about') }}</a></li>
+                        <li><a href="{{ url(LaravelLocalization::getCurrentLocale() . '/customer/pharmacy-contacts') }}">{{ trans('messages.contacts') }}</a></li>
+                        <li><a href="{{ url(LaravelLocalization::getCurrentLocale() . '/customer/pharmacy-about') }}">{{ trans('messages.about') }}</a></li>
                     </ul>
                     <ul class="user-menu nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -75,7 +75,7 @@
                         <li class="dropdown">
                             <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"</span> {{ Auth::user()->name }}<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{ url('/logout') }}"><span class="glyphicon glyphicon-log-out"</span> @lang('messages.logout')</a></li>
+                                <li><a href="{{ url(LaravelLocalization::getCurrentLocale() . '/logout') }}"><span class="glyphicon glyphicon-log-out"</span> @lang('messages.logout')</a></li>
                             </ul>
                         </li>
                         <li><a href="{{ action('Customer\ShoppingCartController@getCartContent') }}"><span class="glyphicon glyphicon-shopping-cart"></span> @lang('messages.cart')</a></li>

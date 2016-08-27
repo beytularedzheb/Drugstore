@@ -40,7 +40,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ action('UserController@show', auth()->user()->id) }}"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> @lang('messages.profile')</a></li>
                                 <li role="presentation" class="divider"></li>
-                                <li><a href="{{ url('/logout') }}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> @lang('messages.logout')</a></li>
+                                <li><a href="{{ url(LaravelLocalization::getCurrentLocale() . '/logout') }}"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> @lang('messages.logout')</a></li>
                             </ul>
                         </li>
                         <li class="dropdown pull-right" style="margin-right: 1em;">
@@ -137,7 +137,7 @@
                     </ul>
                 </li>
                 <li role="presentation" class="divider"></li>
-                <li><a href="{{ url('/') }}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg> @lang('messages.home_page')</a></li>
+                <li><a href="{{ url(LaravelLocalization::getCurrentLocale() . '/admin/') }}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg> @lang('messages.home_page')</a></li>
             </ul>
             @show
         </div><!--/.sidebar-->

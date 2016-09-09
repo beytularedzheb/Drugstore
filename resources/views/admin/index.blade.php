@@ -9,6 +9,8 @@
     </div>
 </div><!--/.row-->
 
+<?php $new_orders_count = App\WardOrder::where('state', null)->count(); ?>
+
 <div class="row">
     <a href="{{ action('AdminController@newOrders') }}">
         <div class="col-xs-12 col-md-6 col-lg-4">

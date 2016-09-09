@@ -16,7 +16,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         
-                        {!! Form::model($productProvider, ['method' => 'PUT', 'route' => ['productProvider.update', $productProvider->id]]) !!}
+                        {!! Form::model($productProvider, ['method' => 'PATCH', 'route' => ['productProvider.update', $productProvider->id]]) !!}
                         
                         <div class="panel-heading text-center">{{ $productProvider->name }}</div>
                         <div class="panel-body">

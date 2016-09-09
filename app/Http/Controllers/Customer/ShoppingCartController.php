@@ -68,7 +68,7 @@ class ShoppingCartController extends Controller {
     public function getCheckout() {
         if (Cart::content() == null || Cart::content()->count() == 0) {
             Session::flash('flash_msg_type', 'danger');
-            Session::flash('flash_message', 'There are not any products in the cart!');
+            Session::flash('flash_message', trans('messages.no_products_in_cart'));
             
             return redirect()->action('Customer\ProductController@getIndex');
         }

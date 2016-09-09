@@ -85,7 +85,7 @@ class ProductProviderController extends Controller {
 
         $this->validate($request, [
             'name' => 'required|max:255',
-            'uic' => 'required|unique:product_providers|max:13|min:9',
+            'uic' => 'required|max:13|min:9',
             'accountable_person_name' => 'required|max:255',
             'phone' => 'max:20'
         ]);

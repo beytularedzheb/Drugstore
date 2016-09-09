@@ -116,6 +116,7 @@ return [
     'patients_by_ward' => 'Patients by ward',
     'contacts' => 'Contacts',
     'about' => 'About',
+    'no_products_in_cart' => 'There are not any products in the cart!',
     
     'register' => 'Register',
     'forgot_password' => 'Forgot your password?',

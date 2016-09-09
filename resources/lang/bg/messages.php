@@ -116,6 +116,7 @@ return [
     'patients_by_ward' => 'Пациенти по болнични отделения',
     'contacts' => 'Контакти',
     'about' => 'За нас',
+    'no_products_in_cart' => 'Няма добавени продукти в количката!',
     
     'register' => 'Регистрация',
     'forgot_password' => 'Забравена парола?',
